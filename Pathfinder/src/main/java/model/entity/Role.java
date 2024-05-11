@@ -15,5 +15,5 @@ import model.enums.Name;
 public class Role extends BaseEntity {
 
     @Enumerated(value = EnumType.STRING)
-    private Name role;
+    private Name name;
 }
