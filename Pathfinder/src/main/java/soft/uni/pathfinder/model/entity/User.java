@@ -31,6 +31,7 @@ public class User extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id"))
     private Set<Role> roles;
 
+    @Enumerated (value = EnumType.STRING)
     @Column
     private Level level;
 

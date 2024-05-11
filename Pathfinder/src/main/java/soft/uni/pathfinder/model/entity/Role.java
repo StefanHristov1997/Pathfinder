@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import soft.uni.pathfinder.model.entity.enums.Name;
+import soft.uni.pathfinder.model.entity.enums.UserRole;
 
 @Getter
 @Setter
@@ -17,5 +17,5 @@ import soft.uni.pathfinder.model.entity.enums.Name;
 public class Role extends BaseEntity {
 
     @Enumerated(value = EnumType.STRING)
-    private Name name;
+    private UserRole name;
 }
