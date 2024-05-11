@@ -1,9 +1,6 @@
 package soft.uni.pathfinder.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,5 +14,6 @@ import soft.uni.pathfinder.model.entity.enums.UserRole;
 public class Role extends BaseEntity {
 
     @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false)
     private UserRole name;
 }
