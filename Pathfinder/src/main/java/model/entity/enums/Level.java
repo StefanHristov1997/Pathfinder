@@ -1,4 +1,4 @@
-package model.enums;
+package model.entity.enums;
 
 public enum Level {
     BEGINNER, INTERMEDIATE, ADVANCED
