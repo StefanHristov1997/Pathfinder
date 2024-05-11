@@ -1,4 +1,4 @@
-package model.entity;
+package soft.uni.pathfinder.model.entity;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

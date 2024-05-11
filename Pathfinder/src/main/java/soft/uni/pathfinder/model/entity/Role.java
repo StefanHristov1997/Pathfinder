@@ -1,4 +1,4 @@
-package model.entity;
+package soft.uni.pathfinder.model.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import model.entity.enums.Name;
+import soft.uni.pathfinder.model.entity.enums.Name;
 
 @Getter
 @Setter

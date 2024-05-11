@@ -1,13 +1,11 @@
-package model.entity;
+package soft.uni.pathfinder.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import model.entity.enums.Level;
+import soft.uni.pathfinder.model.entity.enums.Level;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Getter

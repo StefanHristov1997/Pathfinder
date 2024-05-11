@@ -1,6 +1,6 @@
-package repository;
+package soft.uni.pathfinder.repository;
 
-import model.entity.User;
+import soft.uni.pathfinder.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
