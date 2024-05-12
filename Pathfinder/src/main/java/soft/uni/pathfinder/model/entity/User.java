@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import soft.uni.pathfinder.model.entity.enums.Levels;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -27,11 +28,15 @@ public class User extends BaseEntity {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id"))
     private Set<Role> roles;
 
     @Enumerated (value = EnumType.STRING)
     @Column(nullable = false)
     private Levels level;
+
+    public User(){
+        this.roles = new HashSet<>();
+    }
 }
 
