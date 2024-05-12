@@ -3,7 +3,7 @@ package soft.uni.pathfinder.model.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import soft.uni.pathfinder.model.entity.enums.Level;
+import soft.uni.pathfinder.model.entity.enums.Levels;
 
 import java.util.Set;
 
@@ -32,6 +32,6 @@ public class User extends BaseEntity {
 
     @Enumerated (value = EnumType.STRING)
     @Column(nullable = false)
-    private Level level;
+    private Levels level;
 }
 
