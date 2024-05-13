@@ -1,5 +1,5 @@
 package soft.uni.pathfinder.model.entity.enums;
 
-public enum UserRoles {
+public enum UserRoleEnum {
     USER, MODERATOR, ADMIN
     }

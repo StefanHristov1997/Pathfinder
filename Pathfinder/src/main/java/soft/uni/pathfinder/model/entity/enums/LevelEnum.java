@@ -1,5 +1,5 @@
 package soft.uni.pathfinder.model.entity.enums;
 
-public enum Levels {
+public enum LevelEnum {
     BEGINNER, INTERMEDIATE, ADVANCED
 }

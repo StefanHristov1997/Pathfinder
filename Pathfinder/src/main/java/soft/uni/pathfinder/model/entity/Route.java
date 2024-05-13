@@ -3,7 +3,7 @@ package soft.uni.pathfinder.model.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import soft.uni.pathfinder.model.entity.enums.Levels;
+import soft.uni.pathfinder.model.entity.enums.LevelEnum;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,7 +18,7 @@ public class Route extends BaseEntity {
     private String gpxCoordinates;
 
     @Enumerated(value = EnumType.STRING)
-    private Levels level;
+    private LevelEnum level;
 
     @Column(nullable = false)
     private String name;

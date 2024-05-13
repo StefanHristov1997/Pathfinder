@@ -3,7 +3,7 @@ package soft.uni.pathfinder.model.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import soft.uni.pathfinder.model.entity.enums.Levels;
+import soft.uni.pathfinder.model.entity.enums.LevelEnum;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -33,7 +33,7 @@ public class User extends BaseEntity {
 
     @Enumerated (value = EnumType.STRING)
     @Column(nullable = false)
-    private Levels level;
+    private LevelEnum level;
 
     public User(){
         this.roles = new HashSet<>();
