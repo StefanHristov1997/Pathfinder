@@ -32,7 +32,6 @@ public class User extends BaseEntity {
     private Set<Role> roles;
 
     @Enumerated (value = EnumType.STRING)
-    @Column(nullable = false)
     private LevelEnum level;
 
     public User(){

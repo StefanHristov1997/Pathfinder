@@ -12,7 +12,6 @@ import soft.uni.pathfinder.model.entity.enums.CategoryEnum;
 public class Category extends BaseEntity {
 
     @Enumerated(value = EnumType.STRING)
-    @Column(nullable = false)
     private CategoryEnum name;
 
     @Column(columnDefinition = "TEXT", nullable = false)

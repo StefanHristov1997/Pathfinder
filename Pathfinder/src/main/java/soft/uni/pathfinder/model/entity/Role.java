@@ -14,6 +14,5 @@ import soft.uni.pathfinder.model.entity.enums.UserRoleEnum;
 public class Role extends BaseEntity {
 
     @Enumerated(value = EnumType.STRING)
-    @Column(nullable = false)
     private UserRoleEnum name;
 }
