@@ -17,13 +17,15 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final ModelMapper mapper;
     private final PasswordEncoder passwordEncoder;
+    private final LoggedUser loggedUser;
 
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, ModelMapper mapper, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, ModelMapper mapper, PasswordEncoder passwordEncoder, LoggedUser loggedUser) {
         this.userRepository = userRepository;
         this.mapper = mapper;
         this.passwordEncoder = passwordEncoder;
+        this.loggedUser = loggedUser;
     }
 
     @Override
@@ -40,7 +42,8 @@ public class UserServiceImpl implements UserService {
         if (userIsPresent) {
             User currentUser = this.userRepository.findByUsername(userLoginDTO.getUsername()).get();
             if (passwordEncoder.matches(userLoginDTO.getPassword(), currentUser.getPassword())) {
-                LoggedUser loggedUser = mapper.map(currentUser, LoggedUser.class);
+                loggedUser.setUsername(currentUser.getUsername());
+                loggedUser.setPassword(currentUser.getPassword());
                 loggedUser.setLogged(true);
             }else {
                 throw new IllegalArgumentException("Invalid password!");
