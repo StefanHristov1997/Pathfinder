@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-public class RegisterUserDTO implements Serializable {
+public class UserRegistrationDTO implements Serializable {
 
     @Length(min = 3, max = 255)
     @NonNull

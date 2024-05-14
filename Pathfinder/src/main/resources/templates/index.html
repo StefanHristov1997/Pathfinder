@@ -26,10 +26,10 @@
                 <li>
                     <a href="/">Home</a>
                 </li>
-                <li>
+                <li th:unless="${@loggedUser.isLogged}">
                     <a th:href="@{/users/login}">Login</a>
                 </li>
-                <li>
+                <li th:unless="${@loggedUser.isLogged}">
                     <a th:href="@{/users/register}">Register</a>
                 </li>
                 <li>
@@ -44,7 +44,7 @@
                 <li>
                     <a href="/">Admin</a>
                 </li>
-                <li>
+                <li th:if="${@loggedUser.isLogged}">
                     <a href="/">Logout</a>
                 </li>
         </ul>
