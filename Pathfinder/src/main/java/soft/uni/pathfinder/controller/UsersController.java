@@ -10,16 +10,19 @@ import org.springframework.web.servlet.ModelAndView;
 import soft.uni.pathfinder.model.dto.UserLoginDTO;
 import soft.uni.pathfinder.model.dto.UserRegistrationDTO;
 import soft.uni.pathfinder.service.UserService;
+import soft.uni.pathfinder.util.LoggedUser;
 
 @Controller
 @RequestMapping("/users")
 public class UsersController {
 
     private final UserService userService;
+    private final LoggedUser loggedUser;
 
     @Autowired
-    public UsersController(UserService userService) {
+    public UsersController(UserService userService, LoggedUser loggedUser) {
         this.userService = userService;
+        this.loggedUser = loggedUser;
     }
 
     @GetMapping("/login")
@@ -29,8 +32,13 @@ public class UsersController {
 
     @PostMapping("/login")
     public ModelAndView login(UserLoginDTO userLoginDTO) {
-        this.userService.userLogin(userLoginDTO);
-        return new ModelAndView("redirect:/");
+        boolean isUserLogged = this.userService.userLogin(userLoginDTO);
+
+        if (isUserLogged) {
+            return new ModelAndView("redirect:/");
+        }
+
+        return new ModelAndView("login");
     }
 
     @GetMapping("/register")
@@ -42,6 +50,12 @@ public class UsersController {
     public ModelAndView register(@Valid UserRegistrationDTO userRegistrationDTO) {
         this.userService.userRegistration(userRegistrationDTO);
         return new ModelAndView("redirect:login");
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
+        loggedUser.logOut();
+        return "redirect:/";
     }
 }
 

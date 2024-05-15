@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Navigation Fragment</title>
+</head>
+<body>
+<header th:fragment="navigation">
+    <nav class="main-nav">
+        <ul>
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li th:unless="${@loggedUser.isLogged}">
+                <a th:href="@{/users/login}">Login</a>
+            </li>
+            <li th:unless="${@loggedUser.isLogged}">
+                <a th:href="@{/users/register}">Register</a>
+            </li>
+            <li>
+                <a href="/">About</a>
+            </li>
+            <li th:if="${@loggedUser.isLogged}">
+                <a href="/">Add new route</a>
+            </li>
+            <li>
+                <a href="/">Profile</a>
+            </li>
+            <li>
+                <a href="/">Admin</a>
+            </li>
+            <li th:if="${@loggedUser.isLogged}">
+                <a th:href="@{/users/logout}">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+</body>
+</html>

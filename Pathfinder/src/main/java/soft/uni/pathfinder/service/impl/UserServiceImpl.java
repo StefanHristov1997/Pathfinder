@@ -36,8 +36,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void userLogin(UserLoginDTO userLoginDTO) {
+    public boolean userLogin(UserLoginDTO userLoginDTO) {
         boolean userIsPresent = this.userRepository.findByUsername(userLoginDTO.getUsername()).isPresent();
+        boolean isUserLogged = false;
 
         if (userIsPresent) {
             User currentUser = this.userRepository.findByUsername(userLoginDTO.getUsername()).get();
@@ -45,12 +46,11 @@ public class UserServiceImpl implements UserService {
                 loggedUser.setUsername(currentUser.getUsername());
                 loggedUser.setPassword(currentUser.getPassword());
                 loggedUser.setLogged(true);
-            }else {
-                throw new IllegalArgumentException("Invalid password!");
-            }
-        } else {
-            throw new IllegalArgumentException("Invalid username!");
-        }
 
+                isUserLogged = true;
+            }
+        }
+        return isUserLogged;
     }
+
 }

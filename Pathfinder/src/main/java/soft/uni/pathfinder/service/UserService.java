@@ -5,7 +5,8 @@ import soft.uni.pathfinder.model.dto.UserRegistrationDTO;
 
 public interface UserService {
     void userRegistration(UserRegistrationDTO userRegistrationDTO);
-    void userLogin(UserLoginDTO userLoginDTO);
+    boolean userLogin(UserLoginDTO userLoginDTO);
+
 }
 
 
