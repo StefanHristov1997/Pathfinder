@@ -48,14 +48,23 @@ public class UsersController {
 
     @PostMapping("/register")
     public ModelAndView register(@Valid UserRegistrationDTO userRegistrationDTO) {
-        this.userService.userRegistration(userRegistrationDTO);
-        return new ModelAndView("redirect:login");
+        if (this.userService.isConfirmPasswordValid(userRegistrationDTO)) {
+            this.userService.userRegistration(userRegistrationDTO);
+            return new ModelAndView("redirect:login");
+        }
+
+        return new ModelAndView("register");
     }
 
     @GetMapping("/logout")
     public String logout() {
-        loggedUser.logOut();
+        this.loggedUser.logOut();
         return "redirect:/";
+    }
+
+    @GetMapping("/profile")
+    public String profile() {
+        return "profile";
     }
 }
 

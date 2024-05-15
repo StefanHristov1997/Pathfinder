@@ -30,10 +30,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void userRegistration(UserRegistrationDTO userRegistrationDTO) {
-        User user = mapper.map(userRegistrationDTO, User.class);
-        user.setPassword(this.passwordEncoder.encode(user.getPassword()));
-        this.userRepository.save(user);
+            User user = mapper.map(userRegistrationDTO, User.class);
+            user.setPassword(this.passwordEncoder.encode(user.getPassword()));
+            this.userRepository.save(user);
     }
+
 
     @Override
     public boolean userLogin(UserLoginDTO userLoginDTO) {
@@ -52,5 +53,11 @@ public class UserServiceImpl implements UserService {
         }
         return isUserLogged;
     }
+
+    @Override
+    public boolean isConfirmPasswordValid(UserRegistrationDTO userRegistrationDTO) {
+        return userRegistrationDTO.getPassword().equals(userRegistrationDTO.getConfirmPassword());
+    }
+
 
 }

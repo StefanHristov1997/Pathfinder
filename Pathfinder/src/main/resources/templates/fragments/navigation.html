@@ -24,7 +24,7 @@
                 <a href="/">Add new route</a>
             </li>
             <li th:if="${@loggedUser.isLogged}">
-                <a href="/">Profile</a>
+                <a th:href="@{users/profile}">Profile</a>
             </li>
             <li>
                 <a href="/">Admin</a>
