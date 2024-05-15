@@ -10,19 +10,16 @@ import org.springframework.web.servlet.ModelAndView;
 import soft.uni.pathfinder.model.dto.UserLoginDTO;
 import soft.uni.pathfinder.model.dto.UserRegistrationDTO;
 import soft.uni.pathfinder.service.UserService;
-import soft.uni.pathfinder.util.LoggedUser;
 
 @Controller
 @RequestMapping("/users")
 public class UsersController {
 
     private final UserService userService;
-    private final LoggedUser loggedUser;
 
     @Autowired
-    public UsersController(UserService userService, LoggedUser loggedUser) {
+    public UsersController(UserService userService) {
         this.userService = userService;
-        this.loggedUser = loggedUser;
     }
 
     @GetMapping("/login")
@@ -46,25 +43,30 @@ public class UsersController {
         return new ModelAndView("register");
     }
 
+    //TODO: FIX NOT TO CREATE TWO INSTANCE OF VIEW
     @PostMapping("/register")
     public ModelAndView register(@Valid UserRegistrationDTO userRegistrationDTO) {
         if (this.userService.isConfirmPasswordValid(userRegistrationDTO)) {
             this.userService.userRegistration(userRegistrationDTO);
             return new ModelAndView("redirect:login");
         }
-
         return new ModelAndView("register");
     }
 
     @GetMapping("/logout")
-    public String logout() {
-        this.loggedUser.logOut();
-        return "redirect:/";
+    public ModelAndView logout() {
+        this.userService.userLogout();
+        return new ModelAndView("redirect:/");
     }
 
     @GetMapping("/profile")
-    public String profile() {
-        return "profile";
+    public ModelAndView profile() {
+        return new ModelAndView("profile");
+    }
+
+    @GetMapping("/profile/back")
+    public ModelAndView homeMenu() {
+        return new ModelAndView("redirect:/");
     }
 }
 

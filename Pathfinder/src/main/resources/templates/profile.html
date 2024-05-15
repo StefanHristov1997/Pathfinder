@@ -18,10 +18,6 @@
             crossorigin=""></script>
 </head>
 <body>
-<header>
-    <!-- Navigation -->
-    <div th:replace="~{fragments/navigation}"></div>
-</header>
 <main class="p-5 align-content-center bg-blur my-register-div">
     <div class="container mt-5">
         <div class="row d-flex justify-content-center">
@@ -34,8 +30,6 @@
                         <span>UI/UX Designer</span>
                         <h5 class="mt-2 mb-0">Username</h5>
                         <span>UI/UX Designer</span>
-                        <h5 class="mt-2 mb-0">Age</h5>
-                        <span>33</span>
                         <div class="px-4 mt-5">
                             <p class="fonts">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim et nostrum
                                 optio perferendis quam quod ratione rem sit soluta ut! A dolor laborum, maiores neque
@@ -48,8 +42,10 @@
                             <li><i class="fab fa-google"></i></li>
                         </ul>
                         <div class="buttons">
-                            <button class="btn btn-outline-primary px-4">Back</button>
-                            <!--                            <button class="btn btn-primary px-4 ms-3">Contact</button>-->
+                            <button class="btn btn-outline-primary px-4">
+                                <a th:href="@{/users/profile/back}">Back to Home Menu</a>
+                            </button>
+                            <!--<button class="btn btn-primary px-4 ms-3">Contact</button>-->
                         </div>
                     </div>
                 </div>

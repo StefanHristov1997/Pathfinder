@@ -7,6 +7,7 @@ public interface UserService {
     void userRegistration(UserRegistrationDTO userRegistrationDTO);
     boolean userLogin(UserLoginDTO userLoginDTO);
     boolean isConfirmPasswordValid(UserRegistrationDTO userLoginDTO);
+    void userLogout();
 
 }
 

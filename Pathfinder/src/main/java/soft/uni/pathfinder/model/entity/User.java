@@ -14,7 +14,7 @@ import java.util.Set;
 @Table(name = "users")
 public class User extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
     @Column (nullable = false)
@@ -37,5 +37,6 @@ public class User extends BaseEntity {
     public User(){
         this.roles = new HashSet<>();
     }
+
 }
 

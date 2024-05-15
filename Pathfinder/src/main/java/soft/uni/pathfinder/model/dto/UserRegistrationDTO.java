@@ -1,6 +1,7 @@
 package soft.uni.pathfinder.model.dto;
 
 import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.NonNull;
@@ -14,23 +15,22 @@ import java.io.Serializable;
 public class UserRegistrationDTO implements Serializable {
 
     @Length(min = 3, max = 255)
-    @NonNull
+    @NotNull
     private String username;
 
     @Length(min = 3, max = 255)
     private String fullName;
 
-
-    @NonNull
+    @NotNull
     private String email;
 
     @Positive
     @Max(100)
     private int age;
 
-    @NonNull
+    @NotNull
     private String password;
 
-    @NonNull
+    @NotNull
     private String confirmPassword;
 }
