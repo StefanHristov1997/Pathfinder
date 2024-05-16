@@ -4,9 +4,9 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+import soft.uni.pathfinder.model.entity.enums.LevelEnum;
 
 import java.io.Serializable;
 
@@ -33,4 +33,7 @@ public class UserRegistrationDTO implements Serializable {
 
     @NotNull
     private String confirmPassword;
+
+
+    private String level;
 }

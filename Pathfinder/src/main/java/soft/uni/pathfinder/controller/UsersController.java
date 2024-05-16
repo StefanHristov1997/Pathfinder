@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import soft.uni.pathfinder.model.dto.UserLoginDTO;
 import soft.uni.pathfinder.model.dto.UserRegistrationDTO;
+import soft.uni.pathfinder.model.entity.enums.LevelEnum;
 import soft.uni.pathfinder.service.UserService;
 
 @Controller
@@ -50,7 +51,7 @@ public class UsersController {
             this.userService.userRegistration(userRegistrationDTO);
             return new ModelAndView("redirect:login");
         }
-        return new ModelAndView("register");
+        return new ModelAndView("/register");
     }
 
     @GetMapping("/logout")

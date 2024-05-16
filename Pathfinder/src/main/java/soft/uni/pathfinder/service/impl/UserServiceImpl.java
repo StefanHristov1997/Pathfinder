@@ -2,12 +2,12 @@ package soft.uni.pathfinder.service.impl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.BeanDefinitionDsl;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import soft.uni.pathfinder.model.dto.UserLoginDTO;
 import soft.uni.pathfinder.model.dto.UserRegistrationDTO;
 import soft.uni.pathfinder.model.entity.User;
+import soft.uni.pathfinder.model.entity.enums.LevelEnum;
 import soft.uni.pathfinder.model.entity.enums.UserRoleEnum;
 import soft.uni.pathfinder.repository.UserRepository;
 import soft.uni.pathfinder.service.RoleService;
@@ -39,6 +39,7 @@ public class UserServiceImpl implements UserService {
             User user = mapper.map(userRegistrationDTO, User.class);
             user.setPassword(this.passwordEncoder.encode(user.getPassword()));
             user.setRoles(roleService.findByRoleName(UserRoleEnum.USER));
+            user.setLevel(LevelEnum.BEGINNER);
             this.userRepository.save(user);
     }
 
