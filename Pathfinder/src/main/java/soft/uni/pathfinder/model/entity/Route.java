@@ -14,7 +14,7 @@ import java.util.Set;
 @Table(name = "routes")
 public class Route extends BaseEntity {
 
-    @Column(name = "gpx_coordinates", nullable = false, columnDefinition = "LONGTEXT")
+    @Column(name = "gpx_coordinates", columnDefinition = "LONGTEXT")
     private String gpxCoordinates;
 
     @Enumerated(value = EnumType.STRING)

@@ -1,4 +1,4 @@
-package soft.uni.pathfinder.controller;
+package soft.uni.pathfinder.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

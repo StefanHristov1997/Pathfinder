@@ -14,6 +14,8 @@ import soft.uni.pathfinder.service.RoleService;
 import soft.uni.pathfinder.service.UserService;
 import soft.uni.pathfinder.util.LoggedUser;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -71,6 +73,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void userLogout() {
         this.loggedUser.reset();
+    }
+
+    @Override
+    public Optional<User> findUserByUsername(String username) {
+        return this.userRepository.findByUsername(username);
     }
 
 

@@ -9,7 +9,7 @@
     <nav class="main-nav">
         <ul>
             <li th:unless="${@loggedUser.isLogged}">
-                <a href="/">Home</a>
+                <a th:href="@{index}">Home</a>
             </li>
             <li th:unless="${@loggedUser.isLogged}">
                 <a th:href="@{/users/login}">Login</a>
