@@ -3,10 +3,12 @@ package soft.uni.pathfinder.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import soft.uni.pathfinder.service.RouteService;
 
 @Controller
+@RequestMapping("/routes")
 public class RouteController {
 
     private final RouteService routeService;
@@ -21,5 +23,10 @@ public class RouteController {
        return new ModelAndView("/routes");
 //        view.addObject("routes", routeService.getAllRoutes());
 //        return view;
+    }
+
+    @GetMapping("/add")
+    public ModelAndView addRoute() {
+        return new ModelAndView("add-route");
     }
 }

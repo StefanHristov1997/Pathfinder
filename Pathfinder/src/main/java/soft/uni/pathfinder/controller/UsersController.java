@@ -1,11 +1,8 @@
 package soft.uni.pathfinder.controller;
 
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import soft.uni.pathfinder.model.dto.UserLoginDTO;
 import soft.uni.pathfinder.model.dto.UserRegistrationDTO;
@@ -44,9 +41,13 @@ public class UsersController {
         return new ModelAndView("register");
     }
 
-    //TODO: FIX NOT TO CREATE TWO INSTANCE OF VIEW
+    @ModelAttribute("levels")
+    public LevelEnum[] levels() {
+        return LevelEnum.values();
+    }
+
     @PostMapping("/register")
-    public ModelAndView register(@Valid UserRegistrationDTO userRegistrationDTO) {
+    public ModelAndView register(UserRegistrationDTO userRegistrationDTO) {
         if (this.userService.isConfirmPasswordValid(userRegistrationDTO)) {
             this.userService.userRegistration(userRegistrationDTO);
             return new ModelAndView("redirect:login");

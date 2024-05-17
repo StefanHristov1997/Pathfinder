@@ -34,6 +34,5 @@ public class UserRegistrationDTO implements Serializable {
     @NotNull
     private String confirmPassword;
 
-
-    private String level;
+    private LevelEnum level;
 }

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
+import soft.uni.pathfinder.model.entity.enums.LevelEnum;
 import soft.uni.pathfinder.model.entity.enums.UserRoleEnum;
 
 @Getter
@@ -16,6 +17,7 @@ public class LoggedUser {
     private String password;
     private boolean isLogged;
     private UserRoleEnum role;
+    private LevelEnum level;
 
     public void reset() {
         setPassword(null);

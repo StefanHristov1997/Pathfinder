@@ -39,7 +39,6 @@ public class UserServiceImpl implements UserService {
             User user = mapper.map(userRegistrationDTO, User.class);
             user.setPassword(this.passwordEncoder.encode(user.getPassword()));
             user.setRoles(roleService.findByRoleName(UserRoleEnum.USER));
-            user.setLevel(LevelEnum.BEGINNER);
             this.userRepository.save(user);
     }
 
@@ -55,6 +54,7 @@ public class UserServiceImpl implements UserService {
                 loggedUser.setUsername(currentUser.getUsername());
                 loggedUser.setPassword(currentUser.getPassword());
                 loggedUser.setRole(UserRoleEnum.USER);
+                loggedUser.setLevel(currentUser.getLevel());
                 loggedUser.setLogged(true);
 
                 isUserLogged = true;

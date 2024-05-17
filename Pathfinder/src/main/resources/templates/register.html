@@ -122,6 +122,15 @@
                         </small>
                     </div>
                 </div>
+
+                <div>
+                    <div class="col-auto">
+                        <label for="level">Level</label>
+                        <select  id="level" name="level" class="custom-select">
+                            <option th:each="lev: ${levels}" th:text="${#strings.toLowerCase(lev)}" th:value="${lev}"  selected>Select level</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="d-flex justify-content-center mt-4">
                     <button class="btn btn-primary btn-block w-50" type="submit">Register</button>
                 </div>
