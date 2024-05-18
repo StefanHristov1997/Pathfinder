@@ -8,8 +8,8 @@
 <header th:fragment="navigation">
     <nav class="main-nav">
         <ul>
-            <li th:unless="${@loggedUser.isLogged}">
-                <a th:href="@{index}">Home</a>
+            <li>
+                <a th:href="@{/}">Home</a>
             </li>
             <li th:unless="${@loggedUser.isLogged}">
                 <a th:href="@{/users/login}">Login</a>

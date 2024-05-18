@@ -18,11 +18,16 @@
 </head>
 <body>
 <!--<div class="wrapper">-->
-<header>
-    <!-- Navigation -->
-    <div th:replace="~{fragments/navigation}"></div>
-</header>
 
+<!-- Navigation -->
+<header th:fragment="navigation">
+    <nav class="main-nav">
+        <ul>
+            <li>
+                <a th:href="@{/}">Home</a>
+            </li>
+    </nav>
+</header>
 <!-- Top Container -->
 <div class="row justify-content-center ">
     <form id="add-route-form" class="w-50 rounded text-white mt-5"
@@ -65,8 +70,9 @@
         <div>
             <div class="form-group">
                 <label for="level">Level</label>
-                <select id="level" name ="level" class="custom-select">
-                    <option th:each="level: ${levels}" th:text="${level}" th:value="${level}" selected>Select level</option>
+                <select id="level" name="level" class="custom-select">
+                    <option th:each="level: ${levels}" th:text="${level}" th:value="${level}" selected>Select level
+                    </option>
                 </select>
             </div>
         </div>
@@ -81,8 +87,9 @@
         <div>
             <div class="form-group p-3">
                 <label class="p-2" for="categories">Categories:</label>
-                <input class="m-3" th:each="category: ${categories}" th:text="${category}" type="checkbox" name="categories" id="categories"
-                      th:value="${category}" >
+                <input class="m-3" th:each="category: ${categories}" th:text="${category}" type="checkbox"
+                       name="categories" id="categories"
+                       th:value="${category}">
                 <br>
             </div>
         </div>

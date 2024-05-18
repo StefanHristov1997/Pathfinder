@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import soft.uni.pathfinder.model.dto.AddRouteDTO;
+import soft.uni.pathfinder.model.dto.RouteViewDTO;
 import soft.uni.pathfinder.model.entity.Category;
 import soft.uni.pathfinder.model.entity.Route;
 import soft.uni.pathfinder.repository.RouteRepository;
@@ -13,7 +14,9 @@ import soft.uni.pathfinder.service.UserService;
 import soft.uni.pathfinder.util.LoggedUser;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class RouteServiceImpl implements RouteService {
@@ -50,8 +53,10 @@ public class RouteServiceImpl implements RouteService {
         this.routeRepository.save(route);
     }
 
-//    @Override
-//    public List<Route> getAllRoutes() {
-//        return routeRepository.findAllRoutes();
-//    }
+    @Override
+    public List<RouteViewDTO> getAllRoutes() {
+        List<Route> routes = this.routeRepository.findAll();
+        return routes.stream().map(route -> modelMapper.map(route, RouteViewDTO.class)).toList();
+    }
+
 }

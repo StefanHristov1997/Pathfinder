@@ -23,16 +23,23 @@ public class RouteController {
         this.routeService = routeService;
     }
 
-    @GetMapping()
-    public ModelAndView route() {
-       return new ModelAndView("/routes");
-//        view.addObject("routes", routeService.getAllRoutes());
-//        return view;
+    @GetMapping
+    public ModelAndView routes() {
+        ModelAndView modelAndView = new ModelAndView("routes");
+        modelAndView.addObject("routes", this.routeService.getAllRoutes());
+
+        return modelAndView;
     }
 
     @GetMapping("/add")
     public ModelAndView addRoute() {
         return new ModelAndView("add-route");
+    }
+
+    @PostMapping("/add")
+    public ModelAndView addRoute(AddRouteDTO addRouteDTO) {
+        this.routeService.addRoute(addRouteDTO);
+        return new ModelAndView("redirect:index");
     }
 
     @ModelAttribute("categories")
@@ -43,11 +50,5 @@ public class RouteController {
     @ModelAttribute("levels")
     public LevelEnum[] levelEnums() {
         return LevelEnum.values();
-    }
-
-    @PostMapping("/add")
-    public ModelAndView addRoute(AddRouteDTO addRouteDTO) {
-        this.routeService.addRoute(addRouteDTO);
-        return new ModelAndView("redirect:index");
     }
 }

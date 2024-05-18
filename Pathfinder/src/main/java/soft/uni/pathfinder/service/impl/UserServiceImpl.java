@@ -56,7 +56,6 @@ public class UserServiceImpl implements UserService {
                 loggedUser.setUsername(currentUser.getUsername());
                 loggedUser.setPassword(currentUser.getPassword());
                 loggedUser.setRole(UserRoleEnum.USER);
-                loggedUser.setLevel(currentUser.getLevel());
                 loggedUser.setLogged(true);
 
                 isUserLogged = true;
