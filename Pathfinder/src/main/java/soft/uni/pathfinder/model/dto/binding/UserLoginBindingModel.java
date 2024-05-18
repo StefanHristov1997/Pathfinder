@@ -1,4 +1,4 @@
-package soft.uni.pathfinder.model.dto;
+package soft.uni.pathfinder.model.dto.binding;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserLoginDTO {
+public class UserLoginBindingModel {
 
     @NotNull
     private String username;

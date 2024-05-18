@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import soft.uni.pathfinder.model.dto.AddRouteDTO;
+import soft.uni.pathfinder.model.dto.binding.AddRouteBindingModel;
 import soft.uni.pathfinder.model.entity.enums.CategoryEnum;
 import soft.uni.pathfinder.model.entity.enums.LevelEnum;
 import soft.uni.pathfinder.service.RouteService;
@@ -37,8 +37,8 @@ public class RouteController {
     }
 
     @PostMapping("/add")
-    public ModelAndView addRoute(AddRouteDTO addRouteDTO) {
-        this.routeService.addRoute(addRouteDTO);
+    public ModelAndView addRoute(AddRouteBindingModel addRouteBindingModel) {
+        this.routeService.addRoute(addRouteBindingModel);
         return new ModelAndView("redirect:index");
     }
 

@@ -3,8 +3,8 @@ package soft.uni.pathfinder.service.impl;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import soft.uni.pathfinder.model.dto.AddRouteDTO;
-import soft.uni.pathfinder.model.dto.RouteViewDTO;
+import soft.uni.pathfinder.model.dto.binding.AddRouteBindingModel;
+import soft.uni.pathfinder.model.dto.view.RouteViewModel;
 import soft.uni.pathfinder.model.entity.Category;
 import soft.uni.pathfinder.model.entity.Route;
 import soft.uni.pathfinder.repository.RouteRepository;
@@ -16,7 +16,6 @@ import soft.uni.pathfinder.util.LoggedUser;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class RouteServiceImpl implements RouteService {
@@ -39,12 +38,12 @@ public class RouteServiceImpl implements RouteService {
 
     //TODO: BETTER IMPLEMENTATION
     @Override
-    public void addRoute(AddRouteDTO routeDTO) {
-        Route route = this.modelMapper.map(routeDTO, Route.class);
+    public void addRoute(AddRouteBindingModel addRouteBindingModel) {
+        Route route = this.modelMapper.map(addRouteBindingModel, Route.class);
         route.setAuthor(userService.findUserByUsername(loggedUser.getUsername()).get());
         Set<Category> categoriesToSet = new HashSet<>();
 
-        routeDTO.getCategories().forEach(categoryEnum -> {
+        addRouteBindingModel.getCategories().forEach(categoryEnum -> {
             Category category = categoryService.getCategory(categoryEnum);
             categoriesToSet.add(category);
         });
@@ -54,9 +53,9 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public List<RouteViewDTO> getAllRoutes() {
+    public List<RouteViewModel> getAllRoutes() {
         List<Route> routes = this.routeRepository.findAll();
-        return routes.stream().map(route -> modelMapper.map(route, RouteViewDTO.class)).toList();
+        return routes.stream().map(route -> modelMapper.map(route, RouteViewModel.class)).toList();
     }
 
 }

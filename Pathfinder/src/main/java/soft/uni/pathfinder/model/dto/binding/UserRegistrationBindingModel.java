@@ -1,4 +1,4 @@
-package soft.uni.pathfinder.model.dto;
+package soft.uni.pathfinder.model.dto.binding;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-public class UserRegistrationDTO implements Serializable {
+public class UserRegistrationBindingModel implements Serializable {
 
     @Length(min = 3, max = 255)
     @NotNull

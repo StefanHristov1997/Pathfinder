@@ -4,10 +4,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import soft.uni.pathfinder.model.dto.UserLoginDTO;
-import soft.uni.pathfinder.model.dto.UserRegistrationDTO;
+import soft.uni.pathfinder.model.dto.binding.UserLoginBindingModel;
+import soft.uni.pathfinder.model.dto.binding.UserRegistrationBindingModel;
 import soft.uni.pathfinder.model.entity.User;
-import soft.uni.pathfinder.model.entity.enums.LevelEnum;
 import soft.uni.pathfinder.model.entity.enums.UserRoleEnum;
 import soft.uni.pathfinder.repository.UserRepository;
 import soft.uni.pathfinder.service.RoleService;
@@ -37,8 +36,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void userRegistration(UserRegistrationDTO userRegistrationDTO) {
-            User user = mapper.map(userRegistrationDTO, User.class);
+    public void userRegistration(UserRegistrationBindingModel userRegistrationBindingModel) {
+            User user = mapper.map(userRegistrationBindingModel, User.class);
             user.setPassword(this.passwordEncoder.encode(user.getPassword()));
             user.setRoles(roleService.findByRoleName(UserRoleEnum.USER));
             this.userRepository.save(user);
@@ -46,13 +45,13 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public boolean userLogin(UserLoginDTO userLoginDTO) {
-        boolean userIsPresent = this.userRepository.findByUsername(userLoginDTO.getUsername()).isPresent();
+    public boolean userLogin(UserLoginBindingModel userLoginBindingModel) {
+        boolean userIsPresent = this.userRepository.findByUsername(userLoginBindingModel.getUsername()).isPresent();
         boolean isUserLogged = false;
 
         if (userIsPresent) {
-            User currentUser = this.userRepository.findByUsername(userLoginDTO.getUsername()).get();
-            if (passwordEncoder.matches(userLoginDTO.getPassword(), currentUser.getPassword())) {
+            User currentUser = this.userRepository.findByUsername(userLoginBindingModel.getUsername()).get();
+            if (passwordEncoder.matches(userLoginBindingModel.getPassword(), currentUser.getPassword())) {
                 loggedUser.setUsername(currentUser.getUsername());
                 loggedUser.setPassword(currentUser.getPassword());
                 loggedUser.setRole(UserRoleEnum.USER);
@@ -65,8 +64,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean isConfirmPasswordValid(UserRegistrationDTO userRegistrationDTO) {
-        return userRegistrationDTO.getPassword().equals(userRegistrationDTO.getConfirmPassword());
+    public boolean isConfirmPasswordValid(UserRegistrationBindingModel userRegistrationBindingModel) {
+        return userRegistrationBindingModel.getPassword().equals(userRegistrationBindingModel.getConfirmPassword());
     }
 
     @Override

@@ -1,4 +1,4 @@
-package soft.uni.pathfinder.model.dto;
+package soft.uni.pathfinder.model.dto.binding;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class AddRouteDTO {
+public class AddRouteBindingModel {
 
     private LevelEnum level;
 
