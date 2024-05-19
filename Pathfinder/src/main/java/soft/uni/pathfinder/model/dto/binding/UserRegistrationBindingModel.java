@@ -1,9 +1,7 @@
 package soft.uni.pathfinder.model.dto.binding;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import jakarta.persistence.Entity;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -20,9 +18,11 @@ public class UserRegistrationBindingModel implements Serializable {
     private String username;
 
     @Length(min = 3, max = 255)
+    @NotNull
     private String fullName;
 
     @NotNull
+    @Email
     private String email;
 
     @Positive

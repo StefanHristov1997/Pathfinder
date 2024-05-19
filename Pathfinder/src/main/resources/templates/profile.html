@@ -18,6 +18,7 @@
             crossorigin=""></script>
 </head>
 <body>
+<div th:replace="~{fragments/navigation}"></div>
 <main class="p-5 align-content-center bg-blur my-register-div">
     <div class="container mt-5">
         <div class="row d-flex justify-content-center">
@@ -25,13 +26,17 @@
                 <div class="profile-card p-3 py-4">
                     <div class="text-center"><img src="/images/profile.jpg" width="100" class="rounded-circle"></div>
                     <div class="text-center mt-3">
-                        <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
-                        <h5 class="mt-4 mb-0">Username</h5>
-                        <span th:text="${@loggedUser.getUsername()}"></span>
-                        <h5 class="mt-2 mb-0">Role</h5>
-<!--                        <span th:text="${@loggedUser.getRole()}"></span>-->
-                        <h5 class="mt-2 mb-0">Level</h5>
-<!--                        <span th:text="${@loggedUser.getLevel()}"></span>-->
+                        <span th:text="${profile.getLevel()}"
+                              class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
+                        <h5 class="mt-4 mb-0">Full name</h5>
+                        <span th:text="${profile.getFullName()}">UI/UX Designer</span>
+                        <h5 class="mt-2 mb-0">Username</h5>
+                        <span th:text="${profile.getUsername()}">UI/UX Designer</span>
+                        <div class="px-4 mt-5">
+                            <p class="fonts">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim et nostrum
+                                optio perferendis quam quod ratione rem sit soluta ut! A dolor laborum, maiores neque
+                                nesciunt quis rerum sunt suscipit. </p>
+                        </div>
                         <ul class="social-list">
                             <li><i class="fab fa-facebook-square"></i></li>
                             <li><i class="fab fa-instagram"></i></li>
@@ -40,18 +45,16 @@
                         </ul>
                         <div class="buttons">
                             <button class="btn btn-outline-primary px-4">
-                                <a th:href="@{/users/profile/back}">Back to Home Menu</a>
+                                <a th:href="@{/users/profile/back}">Back To Home Menu</a>
                             </button>
-                            <!--<button class="btn btn-primary px-4 ms-3">Contact</button>-->
+                            <!--                            <button class="btn btn-primary px-4 ms-3">Contact</button>-->
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </main>
-<!-- Wrapper Ends -->'
-<footer th:replace="~{fragments/footer.html}"></footer>
 </body>
+<div th:replace="~{fragments/footer}"></div>
 </html>

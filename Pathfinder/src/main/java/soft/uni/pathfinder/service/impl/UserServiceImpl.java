@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import soft.uni.pathfinder.model.dto.view.ProfileViewModel;
 import soft.uni.pathfinder.model.dto.binding.UserLoginBindingModel;
 import soft.uni.pathfinder.model.dto.binding.UserRegistrationBindingModel;
 import soft.uni.pathfinder.model.entity.User;
@@ -37,10 +38,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void userRegistration(UserRegistrationBindingModel userRegistrationBindingModel) {
-            User user = mapper.map(userRegistrationBindingModel, User.class);
-            user.setPassword(this.passwordEncoder.encode(user.getPassword()));
-            user.setRoles(roleService.findByRoleName(UserRoleEnum.USER));
-            this.userRepository.save(user);
+        User user = mapper.map(userRegistrationBindingModel, User.class);
+        user.setPassword(this.passwordEncoder.encode(user.getPassword()));
+        user.setRoles(roleService.findByRoleName(UserRoleEnum.USER));
+        this.userRepository.save(user);
     }
 
 
@@ -76,6 +77,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> findUserByUsername(String username) {
         return this.userRepository.findByUsername(username);
+    }
+
+    @Override
+    public ProfileViewModel getProfile() {
+        User user = this.userRepository.findByUsername(loggedUser.getUsername()).get();
+        return mapper.map(user, ProfileViewModel.class);
     }
 
 

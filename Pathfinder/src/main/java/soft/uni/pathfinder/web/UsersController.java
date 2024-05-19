@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import soft.uni.pathfinder.model.dto.view.ProfileViewModel;
 import soft.uni.pathfinder.model.dto.binding.UserLoginBindingModel;
 import soft.uni.pathfinder.model.dto.binding.UserRegistrationBindingModel;
 import soft.uni.pathfinder.model.entity.enums.LevelEnum;
@@ -66,7 +67,12 @@ public class UsersController {
 
     @GetMapping("/profile")
     public ModelAndView profile() {
-        return new ModelAndView("profile");
+        ModelAndView modelAndView = new ModelAndView("profile");
+
+        ProfileViewModel profileViewModel = userService.getProfile();
+        modelAndView.addObject("profile", profileViewModel);
+
+        return modelAndView;
     }
 
     @GetMapping("/profile/back")
