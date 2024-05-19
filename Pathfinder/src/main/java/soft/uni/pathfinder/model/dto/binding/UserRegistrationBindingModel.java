@@ -1,6 +1,7 @@
 package soft.uni.pathfinder.model.dto.binding;
 
 import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Getter;
@@ -25,6 +26,7 @@ public class UserRegistrationBindingModel implements Serializable {
     private String email;
 
     @Positive
+    @Min(6)
     @Max(100)
     private int age;
 
@@ -34,5 +36,6 @@ public class UserRegistrationBindingModel implements Serializable {
     @NotNull
     private String confirmPassword;
 
+    @NotNull
     private LevelEnum level;
 }

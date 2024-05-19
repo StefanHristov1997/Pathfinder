@@ -1,8 +1,12 @@
 package soft.uni.pathfinder.web;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import soft.uni.pathfinder.model.dto.binding.UserLoginBindingModel;
 import soft.uni.pathfinder.model.dto.binding.UserRegistrationBindingModel;
@@ -26,14 +30,15 @@ public class UsersController {
     }
 
     @PostMapping("/login")
-    public ModelAndView login(UserLoginBindingModel userLoginDTO) {
+    public ModelAndView login(@Valid UserLoginBindingModel userLoginDTO) {
+        ModelAndView modelAndView = new ModelAndView("login");
         boolean isUserLogged = this.userService.userLogin(userLoginDTO);
 
         if (isUserLogged) {
-            return new ModelAndView("redirect:/");
+            modelAndView.setViewName("redirect:/");
         }
 
-        return new ModelAndView("login");
+        return modelAndView;
     }
 
     @GetMapping("/register")
@@ -41,18 +46,16 @@ public class UsersController {
         return new ModelAndView("register");
     }
 
-    @ModelAttribute("levels")
-    public LevelEnum[] levels() {
-        return LevelEnum.values();
-    }
-
     @PostMapping("/register")
-    public ModelAndView register(UserRegistrationBindingModel userRegistrationBindingModel) {
+    public ModelAndView register(@Valid UserRegistrationBindingModel userRegistrationBindingModel) {
+        ModelAndView modelAndView = new ModelAndView("register");
+
         if (this.userService.isConfirmPasswordValid(userRegistrationBindingModel)) {
             this.userService.userRegistration(userRegistrationBindingModel);
-            return new ModelAndView("redirect:login");
+            modelAndView.setViewName("redirect:login");
         }
-        return new ModelAndView("/register");
+
+        return modelAndView;
     }
 
     @GetMapping("/logout")
@@ -69,6 +72,11 @@ public class UsersController {
     @GetMapping("/profile/back")
     public ModelAndView homeMenu() {
         return new ModelAndView("redirect:/");
+    }
+
+    @ModelAttribute("levels")
+    public LevelEnum[] levels() {
+        return LevelEnum.values();
     }
 }
 

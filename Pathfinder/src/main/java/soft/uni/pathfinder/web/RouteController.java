@@ -1,5 +1,6 @@
 package soft.uni.pathfinder.web;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,12 +33,12 @@ public class RouteController {
     }
 
     @GetMapping("/add")
-    public ModelAndView addRoute() {
+    public ModelAndView add() {
         return new ModelAndView("add-route");
     }
 
     @PostMapping("/add")
-    public ModelAndView addRoute(AddRouteBindingModel addRouteBindingModel) {
+    public ModelAndView add(@Valid AddRouteBindingModel addRouteBindingModel) {
         this.routeService.addRoute(addRouteBindingModel);
         return new ModelAndView("redirect:index");
     }
