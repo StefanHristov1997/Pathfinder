@@ -3,14 +3,17 @@ package soft.uni.pathfinder.web;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import soft.uni.pathfinder.model.dto.view.ProfileViewModel;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import soft.uni.pathfinder.model.dto.binding.UserLoginBindingModel;
 import soft.uni.pathfinder.model.dto.binding.UserRegistrationBindingModel;
+import soft.uni.pathfinder.model.dto.view.ProfileViewModel;
 import soft.uni.pathfinder.model.entity.enums.LevelEnum;
 import soft.uni.pathfinder.service.UserService;
 
@@ -43,13 +46,29 @@ public class UsersController {
     }
 
     @GetMapping("/register")
-    public ModelAndView register() {
+    public ModelAndView register(Model model) {
+
+        if (!model.containsAttribute("userRegistrationBindingModel")) {
+            model.addAttribute("userRegistrationBindingModel", new UserRegistrationBindingModel());
+        }
+
         return new ModelAndView("register");
     }
 
     @PostMapping("/register")
-    public ModelAndView register(@Valid UserRegistrationBindingModel userRegistrationBindingModel) {
+    public ModelAndView register(
+            @Valid UserRegistrationBindingModel userRegistrationBindingModel,
+            BindingResult bindingResult,
+            RedirectAttributes rAtt) {
+
         ModelAndView modelAndView = new ModelAndView("register");
+
+        if (bindingResult.hasErrors()) {
+            rAtt.addFlashAttribute("userRegistrationBindingModel", userRegistrationBindingModel);
+            rAtt.addFlashAttribute("org.springframework.validation.BindingResult.userRegistrationBindingModel", bindingResult);
+            modelAndView.setViewName("redirect:register");
+            return modelAndView;
+        }
 
         if (this.userService.isConfirmPasswordValid(userRegistrationBindingModel)) {
             this.userService.userRegistration(userRegistrationBindingModel);
