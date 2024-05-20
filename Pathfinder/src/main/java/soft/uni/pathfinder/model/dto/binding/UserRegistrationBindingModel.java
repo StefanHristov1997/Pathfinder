@@ -12,11 +12,11 @@ import java.io.Serializable;
 @Setter
 public class UserRegistrationBindingModel implements Serializable {
 
-    @Length(min = 3, max = 255, message = "Username length must be more than 3 characters")
+    @Length(min = 3, max = 255, message = "Username length must be more than 3 characters.")
     @NotEmpty
     private String username;
 
-    @Length(min = 3, max = 255, message = "Username length must be more than 3 characters")
+    @Length(min = 3, max = 255, message = "Username length must be more than 3 characters.")
     @NotEmpty
     private String fullName;
 
