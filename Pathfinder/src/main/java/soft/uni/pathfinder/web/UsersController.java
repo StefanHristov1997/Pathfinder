@@ -66,7 +66,6 @@ public class UsersController {
         if (bindingResult.hasErrors()) {
             rAtt.addFlashAttribute("userRegistrationBindingModel", userRegistrationBindingModel);
             rAtt.addFlashAttribute("org.springframework.validation.BindingResult.userRegistrationBindingModel", bindingResult);
-            modelAndView.setViewName("redirect:register");
             return modelAndView;
         }
 
