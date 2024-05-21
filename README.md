@@ -1,7 +1,7 @@
 # Pathfinder
 
 ### Description:
-A place where people with similar interests can share roads, photos, videos, and comments. </br>
+A place where people with similar interests can share roads, photos, videos, and comments. 
 <img src="https://github.com/StefanHristov1997/Pathfinder/assets/133797718/c46e6004-d8c3-4b2d-a7b7-f853cada2019" alt="home-page" width="600px" height="400px" />
 <img src="https://github.com/StefanHristov1997/Pathfinder/assets/133797718/d528485f-a6ad-4220-ab9c-b1767dfff6ee" alt="home-page" width="600px" height="400px" />
 
@@ -16,3 +16,6 @@ A place where people with similar interests can share roads, photos, videos, and
 <img src="https://github.com/StefanHristov1997/StefanHristov1997/assets/133797718/7b39b9b9-a0db-46d4-bcc9-037ee1f07013" alt="MySQL" width="70" height="70"/> 
 
 ### Functionality:
+<ul>
+   <li>Registration: clients on application can registrate themselfs which allows them to add their favourite roads and trip places.</li>
+</ul>
