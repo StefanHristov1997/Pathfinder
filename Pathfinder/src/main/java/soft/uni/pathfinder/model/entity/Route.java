@@ -23,13 +23,13 @@ public class Route extends BaseEntity {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User author;
 
     @Column(name = "video_url")
     private String videoUrl;
 
-    @Column(name = "image_url")
+    @Column(name = "image_url", columnDefinition = "LONGTEXT")
     private String imageUrl;
 
     @Column(columnDefinition = "TEXT")

@@ -1,11 +1,9 @@
 package soft.uni.pathfinder.service;
 
-import soft.uni.pathfinder.model.dto.view.ProfileViewModel;
 import soft.uni.pathfinder.model.dto.binding.UserLoginBindingModel;
 import soft.uni.pathfinder.model.dto.binding.UserRegistrationBindingModel;
+import soft.uni.pathfinder.model.dto.view.ProfileViewModel;
 import soft.uni.pathfinder.model.entity.User;
-
-import java.util.Optional;
 
 public interface UserService {
 
@@ -17,7 +15,7 @@ public interface UserService {
 
     void userLogout();
 
-    Optional<User> findUserByUsername(String username);
+    User findUserByUsername(String username);
 
     ProfileViewModel getProfile();
 }

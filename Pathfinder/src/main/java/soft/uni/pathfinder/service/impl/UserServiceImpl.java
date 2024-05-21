@@ -4,17 +4,15 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import soft.uni.pathfinder.model.dto.view.ProfileViewModel;
 import soft.uni.pathfinder.model.dto.binding.UserLoginBindingModel;
 import soft.uni.pathfinder.model.dto.binding.UserRegistrationBindingModel;
+import soft.uni.pathfinder.model.dto.view.ProfileViewModel;
 import soft.uni.pathfinder.model.entity.User;
 import soft.uni.pathfinder.model.entity.enums.UserRoleEnum;
 import soft.uni.pathfinder.repository.UserRepository;
 import soft.uni.pathfinder.service.RoleService;
 import soft.uni.pathfinder.service.UserService;
 import soft.uni.pathfinder.util.LoggedUser;
-
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -47,11 +45,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean userLogin(UserLoginBindingModel userLoginBindingModel) {
-        boolean userIsPresent = this.userRepository.findByUsername(userLoginBindingModel.getUsername()).isPresent();
+        User currentUser = this.userRepository.findUserByUsername(userLoginBindingModel.getUsername());
         boolean isUserLogged = false;
 
-        if (userIsPresent) {
-            User currentUser = this.userRepository.findByUsername(userLoginBindingModel.getUsername()).get();
+        if (currentUser != null) {
             if (passwordEncoder.matches(userLoginBindingModel.getPassword(), currentUser.getPassword())) {
                 loggedUser.setUsername(currentUser.getUsername());
                 loggedUser.setPassword(currentUser.getPassword());
@@ -61,12 +58,8 @@ public class UserServiceImpl implements UserService {
                 isUserLogged = true;
             }
         }
-        return isUserLogged;
-    }
 
-    @Override
-    public boolean isConfirmPasswordValid(UserRegistrationBindingModel userRegistrationBindingModel) {
-        return userRegistrationBindingModel.getPassword().equals(userRegistrationBindingModel.getConfirmPassword());
+        return isUserLogged;
     }
 
     @Override
@@ -75,14 +68,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> findUserByUsername(String username) {
-        return this.userRepository.findByUsername(username);
+    public ProfileViewModel getProfile() {
+        User user = this.userRepository.findUserByUsername(loggedUser.getUsername());
+        return mapper.map(user, ProfileViewModel.class);
     }
 
     @Override
-    public ProfileViewModel getProfile() {
-        User user = this.userRepository.findByUsername(loggedUser.getUsername()).get();
-        return mapper.map(user, ProfileViewModel.class);
+    public boolean isConfirmPasswordValid(UserRegistrationBindingModel userRegistrationBindingModel) {
+        return userRegistrationBindingModel.getPassword().equals(userRegistrationBindingModel.getConfirmPassword());
+    }
+
+    @Override
+    public User findUserByUsername(String username) {
+        return this.userRepository.findUserByUsername(username);
     }
 
 

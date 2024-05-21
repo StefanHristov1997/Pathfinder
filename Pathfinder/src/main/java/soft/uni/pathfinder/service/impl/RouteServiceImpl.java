@@ -40,7 +40,7 @@ public class RouteServiceImpl implements RouteService {
     @Override
     public void addRoute(AddRouteBindingModel addRouteBindingModel) {
         Route route = this.modelMapper.map(addRouteBindingModel, Route.class);
-        route.setAuthor(userService.findUserByUsername(loggedUser.getUsername()).get());
+        route.setAuthor(userService.findUserByUsername(loggedUser.getUsername()));
         Set<Category> categoriesToSet = new HashSet<>();
 
         addRouteBindingModel.getCategories().forEach(categoryEnum -> {
