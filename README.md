@@ -21,6 +21,7 @@ A place where people with similar interests can share roads, photos, videos, and
    <li>Тhe destinations are divided into four categories, for those who like to walk, for those who like to ride a bike, motorbike or like long trips with friends.</li>
    <img src="https://github.com/StefanHristov1997/Pathfinder/assets/133797718/ca28a1ef-6081-4bc2-a8e7-ac38c75d80ff" alt="Categories" width="700px" height="200px"/>
    <li>Users can register, which allows them to add, help them remember and share with others their favorite roads and places to travel.</li>
-   <img src="https://github.com/StefanHristov1997/Pathfinder/assets/133797718/ee4c59fb-faf2-4283-9025-a3986c3243ed" alt="Registration form" width="700px" height="200px"/>
+   <img src="https://github.com/StefanHristov1997/Pathfinder/assets/133797718/ee4c59fb-faf2-4283-9025-a3986c3243ed" alt="Registration form" width="400px" height="200px"/>
+    <img src="https://github.com/StefanHristov1997/Pathfinder/assets/133797718/0bb2082c-863d-44c0-bc28-945dc109f23a" alt="Registration form" width="400px" height="200px"/>
    <li>They can also add comments to other destinations, helping other people choose their next trip.</li>
 </ul>
