@@ -16,6 +16,7 @@ A place where people with similar interests can share roads, photos, videos, and
 ### Functionality:
 <ul>
    <li>Not authenticated users can only view the tourist destinations uploaded so far and choose their next trip.</li>
+   <img src="https://github.com/StefanHristov1997/Pathfinder/assets/133797718/a665fec1-08a0-4481-bcd4-27b704c76f49" alt="Kumata hut" width="100px" height="100px"/>
    <li>Тhe destinations are divided into four categories, for those who like to walk, for those who like to ride a bike, motorbike or like long trips with friends.</li>
    <li>Users can register, which allows them to add, help them remember and share with others their favorite roads and places to travel.</li>
    <li>They can also add comments to other destinations, helping other people choose their next trip.</li>
