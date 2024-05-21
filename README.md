@@ -1,5 +1,3 @@
-![image](https://github.com/StefanHristov1997/Pathfinder/assets/133797718/722f08a3-8d48-49ab-bc93-b4b0ce926a70)# Pathfinder
-
 ### Description:
 A place where people with similar interests can share roads, photos, videos, and comments. 
 <img src="https://github.com/StefanHristov1997/Pathfinder/assets/133797718/b78fc1c7-7351-4111-acc6-32d71a4b3ee9" alt="home-page" width="600px" height="400px" />
