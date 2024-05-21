@@ -1,8 +1,9 @@
 # Pathfinder
 
 ### Description:
-A place where people with similar interests can share roads, photos, videos, and comments.
+A place where people with similar interests can share roads, photos, videos, and comments. </br>
 <img src="https://github.com/StefanHristov1997/Pathfinder/assets/133797718/c46e6004-d8c3-4b2d-a7b7-f853cada2019" alt="home-page" width="600px" height="400px" />
+<img src="https://github.com/StefanHristov1997/Pathfinder/assets/133797718/d528485f-a6ad-4220-ab9c-b1767dfff6ee" alt="home-page" width="600px" height="400px" />
 
 
 ### Technologies:
