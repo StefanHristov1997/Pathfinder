@@ -20,18 +20,19 @@ public class User extends BaseEntity {
     @Column (nullable = false)
     private String password;
 
-    @Column(name = "full_name")
+    @Column(name = "full_name", nullable = false)
     private String fullName;
 
     @Column(unique = true, nullable = false)
     private String email;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id"))
     private Set<Role> roles;
 
     @Enumerated (value = EnumType.STRING)
+    @Column(nullable = false)
     private LevelEnum level;
 
     public User(){

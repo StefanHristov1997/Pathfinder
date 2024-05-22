@@ -73,15 +73,29 @@ public class UserServiceImpl implements UserService {
         return mapper.map(user, ProfileViewModel.class);
     }
 
-    @Override
-    public boolean isConfirmPasswordValid(UserRegistrationBindingModel userRegistrationBindingModel) {
-        return userRegistrationBindingModel.getPassword().equals(userRegistrationBindingModel.getConfirmPassword());
-    }
 
     @Override
     public User findUserByUsername(String username) {
-        return this.userRepository.findUserByUsername(username);
+        return this.userRepository.findUserByEmail(username);
     }
 
+
+    @Override
+    public Boolean isUsernameTaken(String username) {
+        return this.userRepository.findUserByUsername(username) == null;
+    }
+
+    @Override
+    public Boolean isEmailTaken(String email) {
+        return this.userRepository.findUserByEmail(email) == null;
+    }
+
+    @Override
+    public Boolean isUserExist(String username, String password) {
+        String encodedPassword = this.passwordEncoder.encode(password);
+        User user = this.userRepository.findUserByUsernameAndPassword(username, encodedPassword);
+
+        return user != null;
+    }
 
 }

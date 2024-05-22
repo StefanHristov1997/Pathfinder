@@ -69,10 +69,8 @@ public class UsersController {
             return modelAndView;
         }
 
-        if (this.userService.isConfirmPasswordValid(userRegistrationBindingModel)) {
-            this.userService.userRegistration(userRegistrationBindingModel);
-            modelAndView.setViewName("redirect:login");
-        }
+        this.userService.userRegistration(userRegistrationBindingModel);
+        modelAndView.setViewName("redirect:login");
 
         return modelAndView;
     }
@@ -86,8 +84,8 @@ public class UsersController {
     @GetMapping("/profile")
     public ModelAndView profile() {
         ModelAndView modelAndView = new ModelAndView("profile");
-
         ProfileViewModel profileViewModel = userService.getProfile();
+
         modelAndView.addObject("profile", profileViewModel);
 
         return modelAndView;

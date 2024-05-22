@@ -20,110 +20,105 @@
 <body>
 <main class="p-5 align-content-center bg-blur my-register-div">
     <h1 class="border-bottom">Register</h1>
-    <div th:object="${userRegistrationBindingModel}" class="d-flex justify-content-center ">
+    <div class="d-flex justify-content-center ">
         <div class="row g-3">
             <form
                     th:action="@{/users/register}"
-                    th:method="POST">
+                    th:method="POST"
+                    th:object="${userRegistrationBindingModel}"
+            >
+
                 <div>
                     <div class="col-auto">
-                        <label for="inputUsername" class="col-form-label ">Username</label>
+                        <label th:for="inputUsername" class="col-form-label ">Username</label>
                     </div>
                     <div class="col-auto">
-                        <input th:name="username"
-                               th:field="*{username}"
+                        <input th:field="*{username}"
                                th:errorclass="is-invalid"
-                               type="text"
-                               id="inputUsername"
-                               class="form-control"
-                               aria-describedby="usernameHelpInline">
-                        <small style="color: white" th:errors="*{username}" id="usernameError"
-                               class="invalid-feedback form-text bg-danger rounded"></small>
+                               th:type="text"
+                               th:id="inputUsername"
+                               th:class="form-control"
+                               th:aria-describedby="usernameHelpInline">
+                        <small th:errors="*{username}" id="usernameError"
+                               class="invalid-feedback alert-danger rounded"></small>
                     </div>
                 </div>
 
                 <div>
                     <div class="col-auto">
-                        <label for="inputFullName" class="col-form-label ">Full Name</label>
+                        <label th:for="inputFullName" class="col-form-label ">Full Name</label>
                     </div>
                     <div class="col-auto">
-                        <input th:name="fullName"
-                               th:field="*{fullName}"
+                        <input th:field="*{fullName}"
                                th:errorclass="is-invalid"
-                               type="text"
-                               id="inputFullName"
-                               class="form-control"
-                               aria-describedby="fullNameHelpInline">
-                        <small style="color: white" th:errors="*{fullName}" id="fullNameError"
-                               class="invalid-feedback  form-text bg-danger rounded"></small>
+                               th:type="text"
+                               th:id="inputFullName"
+                               th:class="form-control"
+                               th:aria-describedby="fullNameHelpInline">
+                        <small th:errors="*{fullName}" id="fullNameError"
+                               class="invalid-feedback alert-danger danger rounded"></small>
                     </div>
                 </div>
 
                 <div>
                     <div class="col-auto">
-                        <label for="inputEmail" class="col-form-label ">Email</label>
+                        <label th:for="inputEmail" class="col-form-label ">Email</label>
                     </div>
                     <div class="col-auto">
-                        <input th:name="email"
-                               th:field="*{email}"
+                        <input th:field="*{email}"
                                th:errorclass="is-invalid"
-                               type="email"
-                               id="inputEmail"
-                               class="form-control"
-                               aria-describedby="emailHelpInline">
-                        <small style="color: white" th:errors="*{email}" id="emailError"
-                               class="invalid-feedback form-text bg-danger rounded"></small>
+                               th:type="email"
+                               th:id="inputEmail"
+                               th:class="form-control"
+                               th:aria-describedby="emailHelpInline">
+                        <small th:errors="*{email}" id="emailError"
+                               class="invalid-feedback alert-danger rounded"></small>
                     </div>
                 </div>
                 <div>
                     <div class="col-auto">
-                        <label for="inputAge" class="col-form-label ">Age</label>
+                        <label th:for="inputAge" class="col-form-label ">Age</label>
                     </div>
                     <div class="col-auto">
-                        <input th:name="age"
-                               th:field="*{age}"
+                        <input th:field="*{age}"
                                th:errorclass="is-invalid"
-                               id="inputAge"
-                               class="form-control"
-                               min="10" max="90"
-                               aria-describedby="ageHelpInline">
-                        <small style="color: white" th:errors="*{age}" id="ageError"
-                               class="invalid-feedback form-text bg-danger rounded"></small>
+                               th:id="inputAge"
+                               th:class="form-control"
+                               th:aria-describedby="ageHelpInline">
+                        <small id="ageError"
+                               class="invalid-feedback alert-danger rounded"></small>
                     </div>
                 </div>
                 <div>
                     <div class="col-auto">
-                        <label for="inputPassword" class="col-form-label ">Password</label>
+                        <label th:for="inputPassword" class="col-form-label ">Password</label>
                     </div>
                     <div class="col-auto">
-                        <input th:name="password"
-                               th:field="*{password}"
+                        <input th:field="*{password}"
                                th:errorclass="is-invalid"
-                               type="password"
-                               id="inputPassword"
-                               class="form-control"
-                               aria-describedby="passwordHelpInline">
-                        <small style="color: white" th:errors="*{password}" id="passwordError"
-                               class="invalid-feedback  form-text bg-danger rounded">
-                        </small>
+                               th:type="password"
+                               th:id="inputPassword"
+                               th:class="form-control"
+                               th:aria-describedby="passwordHelpInline">
+                        <small th:errors="*{password}" id="passwordError"
+                               class="invalid-feedback alert-danger rounded">error message</small>
                     </div>
                 </div>
 
                 <div>
                     <div class="col-auto">
-                        <label for="inputConfirmPassword" class="col-form-label ">Confirm Password</label>
+                        <label th:for="inputConfirmPassword" class="col-form-label ">Confirm Password</label>
                     </div>
                     <div class="col-auto">
-                        <input th:name="confirmPassword"
-                               th:field="*{confirmPassword}"
-                               th:errorclass="is-invalid"
-                               type="password"
-                               id="inputConfirmPassword"
-                               class="form-control"
-                               aria-describedby="confirmPasswordHelpInline">
-                        <small style="color: white" th:errors="*{confirmPassword}" id="confirmPasswordError"
-                               class="invalid-feedback  form-text bg-danger rounded">
-                        </small>
+                        <input
+                                th:field="*{confirmPassword}"
+                                th:errorclass="is-invalid"
+                                th:type="password"
+                                th:id="inputConfirmPassword"
+                                th:class="form-control"
+                                th:aria-describedby="confirmPasswordHelpInline">
+                        <small th:errors="*{confirmPassword}" id="confirmPasswordError"
+                               class="invalid-feedback  alert-danger rounded">error message</small>
                     </div>
                 </div>
 

@@ -11,13 +11,17 @@ public interface UserService {
 
     boolean userLogin(UserLoginBindingModel userLoginDTO);
 
-    boolean isConfirmPasswordValid(UserRegistrationBindingModel userLoginDTO);
-
     void userLogout();
 
     User findUserByUsername(String username);
 
     ProfileViewModel getProfile();
+
+    Boolean isUsernameTaken(String username);
+
+    Boolean isEmailTaken(String email);
+
+    Boolean isUserExist(String username, String password);
 }
 
 
