@@ -15,7 +15,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = PasswordMathValidator.class)
 public @interface PasswordMatch {
 
-    String message() default "Confirm Password Mismatch";
+    String message() default "Confirm Password did not match!";
 
     Class<?>[] groups() default {};
 
