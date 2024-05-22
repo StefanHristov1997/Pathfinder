@@ -29,9 +29,6 @@ public class Route extends BaseEntity {
     @Column(name = "video_url")
     private String videoUrl;
 
-    @Column(name = "image_url", columnDefinition = "LONGTEXT")
-    private String imageUrl;
-
     @Column(columnDefinition = "TEXT")
     private String description;
 

@@ -5,7 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RouteViewModel {
+public class RoutesViewModel {
+    private Long id;
     private String name;
     private String description;
     private String imageUrl;

@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import soft.uni.pathfinder.model.dto.binding.AddRouteBindingModel;
+import soft.uni.pathfinder.model.dto.view.RoutesViewModel;
 import soft.uni.pathfinder.model.entity.enums.CategoryEnum;
 import soft.uni.pathfinder.model.entity.enums.LevelEnum;
 import soft.uni.pathfinder.service.RouteService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/routes")
@@ -27,6 +30,7 @@ public class RouteController {
     @GetMapping
     public ModelAndView routes() {
         ModelAndView modelAndView = new ModelAndView("routes");
+
         modelAndView.addObject("routes", this.routeService.getAllRoutes());
 
         return modelAndView;
