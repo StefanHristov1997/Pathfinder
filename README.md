@@ -6,8 +6,8 @@
 ### Functionality:
 <ul>
    <li><b>Not authenticated users can only view the tourist destinations uploaded so far and choose their next trip with specific details.</b></li>
-   <img src="https://github.com/StefanHristov1997/Pathfinder/assets/133797718/56ae299e-376e-457e-b0d3-7d2284b3b447" alt="Kumata hut" width="350px" height="300px"/>
-   <img src="https://github.com/StefanHristov1997/Pathfinder/assets/133797718/710b0028-ce71-46a0-87dc-3df37c4c5126" alt="VeloErul" width="350px" height="300px"/>
+   <img src="https://github.com/StefanHristov1997/Pathfinder/assets/133797718/56ae299e-376e-457e-b0d3-7d2284b3b447" alt="Kumata hut" width="400px" height="300px"/>
+   <img src="https://github.com/StefanHristov1997/Pathfinder/assets/133797718/710b0028-ce71-46a0-87dc-3df37c4c5126" alt="VeloErul" width="400px" height="300px"/>
    <img src="https://github.com/StefanHristov1997/Pathfinder/assets/133797718/5f3d7e85-61ab-412c-8be5-67ac01885130" alt="VeloErul" width="500px" height="300px"/>
    <li><b>Тhe destinations are divided into four categories, for those who like to walk, for those who like to ride a bike, motorbike or like long trips with friends.</b></li>
    <img src="https://github.com/StefanHristov1997/Pathfinder/assets/133797718/ca28a1ef-6081-4bc2-a8e7-ac38c75d80ff" alt="Categories" width="700px" height="200px"/>
