@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserByUsername(String username) {
-        return this.userRepository.findUserByEmail(username);
+        return this.userRepository.findUserByUsername(username);
     }
 
 
@@ -90,12 +90,5 @@ public class UserServiceImpl implements UserService {
         return this.userRepository.findUserByEmail(email) == null;
     }
 
-    @Override
-    public Boolean isUserExist(String username, String password) {
-        String encodedPassword = this.passwordEncoder.encode(password);
-        User user = this.userRepository.findUserByUsernameAndPassword(username, encodedPassword);
-
-        return user != null;
-    }
 
 }

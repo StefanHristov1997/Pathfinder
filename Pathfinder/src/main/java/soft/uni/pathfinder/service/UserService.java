@@ -21,7 +21,6 @@ public interface UserService {
 
     Boolean isEmailTaken(String email);
 
-    Boolean isUserExist(String username, String password);
 }
 
 

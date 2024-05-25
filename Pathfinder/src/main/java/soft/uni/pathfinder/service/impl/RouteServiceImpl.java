@@ -4,11 +4,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import soft.uni.pathfinder.model.dto.binding.AddRouteBindingModel;
+import soft.uni.pathfinder.model.dto.view.RouteViewModel;
 import soft.uni.pathfinder.model.dto.view.RoutesViewModel;
 import soft.uni.pathfinder.model.entity.Category;
-import soft.uni.pathfinder.model.entity.Picture;
 import soft.uni.pathfinder.model.entity.Route;
-import soft.uni.pathfinder.repository.PictureRepository;
 import soft.uni.pathfinder.repository.RouteRepository;
 import soft.uni.pathfinder.service.CategoryService;
 import soft.uni.pathfinder.service.PictureService;
@@ -18,6 +17,7 @@ import soft.uni.pathfinder.util.LoggedUser;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -62,9 +62,23 @@ public class RouteServiceImpl implements RouteService {
         List<Route> routes = this.routeRepository.findAll();
         return routes.stream().map(route -> {
             RoutesViewModel routesViewModel = modelMapper.map(route, RoutesViewModel.class);
-            routesViewModel.setImageUrl(pictureService.findPictureByRouteId(route.getId()).get(0).getUrl());
+//            Optional<List<Picture>> pictureByRouteId = pictureService.findPictureByRouteId(route.getId());
+//
+//            if (pictureByRouteId.isPresent()) {
+//                routesViewModel.setImageUrl(pictureService.findPictureByRouteId(route.getId()).get().get(0).getUrl());
+//            }
 
             return routesViewModel;
         }).toList();
+    }
+
+    @Override
+    public RouteViewModel getDetails(Long id) {
+        Route route = this.routeRepository.findRouteById(id);
+
+        RouteViewModel routeViewModel =  modelMapper.map(route, RouteViewModel.class);
+        routeViewModel.setAuthorName(route.getAuthor().getUsername());
+
+        return routeViewModel;
     }
 }

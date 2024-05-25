@@ -1,20 +1,13 @@
 package soft.uni.pathfinder.web;
 
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import soft.uni.pathfinder.model.dto.binding.AddRouteBindingModel;
-import soft.uni.pathfinder.model.dto.view.RoutesViewModel;
 import soft.uni.pathfinder.model.entity.enums.CategoryEnum;
 import soft.uni.pathfinder.model.entity.enums.LevelEnum;
 import soft.uni.pathfinder.service.RouteService;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/routes")
@@ -25,6 +18,13 @@ public class RouteController {
     @Autowired
     public RouteController(RouteService routeService) {
         this.routeService = routeService;
+    }
+
+    @GetMapping("/details/{id}")
+    public ModelAndView details(@PathVariable("id") Long id) {
+        ModelAndView modelAndView = new ModelAndView("route-details");
+        modelAndView.addObject("routeDetails", routeService.getDetails(id));
+        return modelAndView;
     }
 
     @GetMapping
@@ -42,9 +42,9 @@ public class RouteController {
     }
 
     @PostMapping("/add")
-    public ModelAndView add(@Valid AddRouteBindingModel addRouteBindingModel) {
+    public ModelAndView add(AddRouteBindingModel addRouteBindingModel) {
         this.routeService.addRoute(addRouteBindingModel);
-        return new ModelAndView("redirect:index");
+        return new ModelAndView("redirect:/");
     }
 
     @ModelAttribute("categories")

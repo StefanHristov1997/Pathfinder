@@ -6,5 +6,5 @@ import soft.uni.pathfinder.model.entity.Route;
 
 @Repository
 public interface RouteRepository extends JpaRepository<Route, Long> {
-
+        Route findRouteById(Long id);
 }

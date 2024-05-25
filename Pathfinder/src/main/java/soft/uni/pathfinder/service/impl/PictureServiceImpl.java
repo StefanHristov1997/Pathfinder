@@ -7,6 +7,7 @@ import soft.uni.pathfinder.repository.PictureRepository;
 import soft.uni.pathfinder.service.PictureService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PictureServiceImpl implements PictureService {
@@ -19,7 +20,7 @@ public class PictureServiceImpl implements PictureService {
     }
 
     @Override
-    public List<Picture> findPictureByRouteId(Long id) {
+    public Optional<List<Picture>> findPictureByRouteId(Long id) {
         return this.pictureRepository.findPictureByRouteId(id);
     }
 }
