@@ -26,7 +26,7 @@
         <div>
             <h2 th:text="${route.getName()}"></h2>
             <p th:text="${route.getDescription()}"></p>
-            <a  class="btn">Learn More</a>
+            <a  th:href="@{/routes/details/{id}(id=${route.id})}" class="btn">Learn More</a>
         </div>
     </section>
 </div>
