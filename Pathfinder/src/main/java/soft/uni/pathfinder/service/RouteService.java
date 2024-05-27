@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface RouteService {
 
-    void addRoute(AddRouteBindingModel routeDTO);
-
-    List<RoutesViewModel> getAllRoutes();
-
-    RouteViewModel getDetails(Long id);
+////    void addRoute(AddRouteBindingModel routeDTO);
+//
+//    List<RoutesViewModel> getAllRoutes();
+//
+//    RouteViewModel getDetails(Long id);
 
 }

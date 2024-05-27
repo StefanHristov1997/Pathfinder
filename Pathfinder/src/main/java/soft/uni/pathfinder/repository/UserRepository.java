@@ -1,16 +1,15 @@
 package soft.uni.pathfinder.repository;
 
-import soft.uni.pathfinder.model.entity.User;
+import soft.uni.pathfinder.model.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
-   User findUserByUsername(String username);
+   Optional<UserEntity> findUserByUsername(String username);
 
-   User findUserByEmail(String email);
-
+   Optional<UserEntity> findUserByEmail(String email);
 }

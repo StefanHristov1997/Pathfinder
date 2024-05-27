@@ -21,12 +21,12 @@
 <div class="wrapper">
     <!-- Navigation -->
     <div th:replace="~{fragments/navigation}"></div>
-    <section th:each="route : ${routes}" class="road">
-        <img th:src="${route.getImageUrl()}" alt="Title image">
+    <section th:each="routeEntity : ${routeEntities}" class="road">
+        <img th:src="${routeEntity.getImageUrl()}" alt="Title image">
         <div>
-            <h2 th:text="${route.getName()}"></h2>
-            <p th:text="${route.getDescription()}"></p>
-            <a  th:href="@{/routes/details/{id}(id=${route.id})}" class="btn">Learn More</a>
+            <h2 th:text="${routeEntity.getName()}"></h2>
+            <p th:text="${routeEntity.getDescription()}"></p>
+            <a  th:href="@{/routeEntities/details/{id}(id=${routeEntity.id})}" class="btn">Learn More</a>
         </div>
     </section>
 </div>

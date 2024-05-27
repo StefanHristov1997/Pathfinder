@@ -30,11 +30,11 @@
 </header>
 <!-- Top Container -->
 <div class="row justify-content-center ">
-    <form id="add-route-form" class="w-50 rounded text-white mt-5"
-          th:action="@{/routes/add}"
+    <form id="add-routeEntity-form" class="w-50 rounded text-white mt-5"
+          th:action="@{/routeEntities/add}"
           th:method="POST"
           enctype="multipart/form-data">
-        <h3 class="border-left border-light pl-2">Add a new route</h3>
+        <h3 class="border-left border-light pl-2">Add a new routeEntity</h3>
         <div>
             <div class="form-group">
                 <label for="inputName" class="col-form-label ">Name</label>
@@ -87,9 +87,9 @@
         <div>
             <div class="form-group p-3">
                 <label class="p-2" for="categories">Categories:</label>
-                <input class="m-3" th:each="category: ${categories}" th:text="${category}" type="checkbox"
+                <input class="m-3" th:each="categoryEntity: ${categories}" th:text="${categoryEntity}" type="checkbox"
                        name="categories" id="categories"
-                       th:value="${category}">
+                       th:value="${categoryEntity}">
                 <br>
             </div>
         </div>

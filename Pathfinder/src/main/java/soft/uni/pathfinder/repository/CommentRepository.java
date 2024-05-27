@@ -2,8 +2,8 @@ package soft.uni.pathfinder.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import soft.uni.pathfinder.model.entity.Comment;
+import soft.uni.pathfinder.model.entity.CommentEntity;
 
 @Repository
-public interface CommentRepository extends JpaRepository<Comment, Long> {
+public interface CommentRepository extends JpaRepository<CommentEntity, Long> {
 }

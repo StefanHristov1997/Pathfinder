@@ -22,7 +22,7 @@
     <div th:replace="fragments/navigation"></div>
     <!--    <input type="hidden" name="routeId" id="routeId">-->
     <div class="details-main">
-        <section class="route-info text-center">
+        <section class="routeEntity-info text-center">
             <h4 th:text="${routeDetails.getName()}" id="track-name"></h4>
             <p>Total distance: <span id="totalDistance"></span> km</p>
             <p>Author name: <span th:text="${routeDetails.getAuthorName()}" id="authorName"></span></p>
@@ -62,9 +62,9 @@
             <iframe id="frame" th:src="'https://www.youtube.com/embed/' + ${routeDetails.videoUrl}">>
             </iframe>
         </section>
-        <section class="route-description text-center">
+        <section class="routeEntity-description text-center">
             <h4 th:text="${routeDetails.getName()}">Description:</h4>
-            <p th:text="${routeDetails.getDescription()}" id="route-description">Description: </p>
+            <p th:text="${routeDetails.getDescription()}" id="routeEntity-description">Description: </p>
         </section>
         <section class="gallery">
             <img class="rounded" src="/images/pic4.jpg" height="100%" alt="">

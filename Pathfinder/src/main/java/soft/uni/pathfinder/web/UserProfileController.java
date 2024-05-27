@@ -19,15 +19,15 @@ public class UserProfileController {
         this.userService = userService;
     }
 
-    @GetMapping("/profile")
-    public ModelAndView profile() {
-        ModelAndView modelAndView = new ModelAndView("profile");
-        ProfileViewModel profileViewModel = userService.getProfile();
-
-        modelAndView.addObject("profile", profileViewModel);
-
-        return modelAndView;
-    }
+//    @GetMapping("/profile")
+//    public ModelAndView profile() {
+//        ModelAndView modelAndView = new ModelAndView("profile");
+//        ProfileViewModel profileViewModel = userService.getProfile();
+//
+//        modelAndView.addObject("profile", profileViewModel);
+//
+//        return modelAndView;
+//    }
 
     @GetMapping("/profile/back")
     public ModelAndView homeMenu() {

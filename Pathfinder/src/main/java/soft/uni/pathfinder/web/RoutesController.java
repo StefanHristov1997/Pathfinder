@@ -11,19 +11,19 @@ import soft.uni.pathfinder.service.RouteService;
 @RequestMapping("/routes")
 public class RoutesController {
 
-    private final RouteService routeService;
-
-    @Autowired
-    public RoutesController(RouteService routeService) {
-        this.routeService = routeService;
-    }
-
-    @GetMapping
-    public ModelAndView routes() {
-        ModelAndView modelAndView = new ModelAndView("routes");
-
-        modelAndView.addObject("routes", this.routeService.getAllRoutes());
-
-        return modelAndView;
-    }
+//    private final RouteService routeService;
+//
+//    @Autowired
+//    public RoutesController(RouteService routeService) {
+//        this.routeService = routeService;
+//    }
+//
+//    @GetMapping
+//    public ModelAndView routes() {
+//        ModelAndView modelAndView = new ModelAndView("routes");
+//
+//        modelAndView.addObject("routes", this.routeService.getAllRoutes());
+//
+//        return modelAndView;
+//    }
 }

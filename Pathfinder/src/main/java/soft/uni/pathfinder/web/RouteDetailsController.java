@@ -12,17 +12,17 @@ import soft.uni.pathfinder.service.RouteService;
 @RequestMapping("/routes")
 public class RouteDetailsController {
 
-    private final RouteService routeService;
-
-    @Autowired
-    public RouteDetailsController(RouteService routeService) {
-        this.routeService = routeService;
-    }
-
-    @GetMapping("/details/{id}")
-    public ModelAndView details(@PathVariable("id") Long id) {
-        ModelAndView modelAndView = new ModelAndView("route-details");
-        modelAndView.addObject("routeDetails", routeService.getDetails(id));
-        return modelAndView;
-    }
+//    private final RouteService routeService;
+//
+//    @Autowired
+//    public RouteDetailsController(RouteService routeService) {
+//        this.routeService = routeService;
+//    }
+//
+//    @GetMapping("/details/{id}")
+//    public ModelAndView details(@PathVariable("id") Long id) {
+//        ModelAndView modelAndView = new ModelAndView("route-details");
+//        modelAndView.addObject("routeDetails", routeService.getDetails(id));
+//        return modelAndView;
+//    }
 }

@@ -3,19 +3,17 @@ package soft.uni.pathfinder.service;
 import soft.uni.pathfinder.model.dto.binding.UserLoginBindingModel;
 import soft.uni.pathfinder.model.dto.binding.UserRegistrationBindingModel;
 import soft.uni.pathfinder.model.dto.view.ProfileViewModel;
-import soft.uni.pathfinder.model.entity.User;
+import soft.uni.pathfinder.model.entity.UserEntity;
+
+import java.util.Optional;
 
 public interface UserService {
 
     void userRegistration(UserRegistrationBindingModel userRegistrationBindingModel);
 
-    boolean userLogin(UserLoginBindingModel userLoginDTO);
+    Optional<UserEntity> findUserByUsername(String username);
 
-    void userLogout();
-
-    User findUserByUsername(String username);
-
-    ProfileViewModel getProfile();
+//    ProfileViewModel getProfile();
 
     Boolean isUsernameTaken(String username);
 

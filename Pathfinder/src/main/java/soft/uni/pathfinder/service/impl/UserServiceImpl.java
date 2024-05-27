@@ -7,12 +7,13 @@ import org.springframework.stereotype.Service;
 import soft.uni.pathfinder.model.dto.binding.UserLoginBindingModel;
 import soft.uni.pathfinder.model.dto.binding.UserRegistrationBindingModel;
 import soft.uni.pathfinder.model.dto.view.ProfileViewModel;
-import soft.uni.pathfinder.model.entity.User;
+import soft.uni.pathfinder.model.entity.UserEntity;
 import soft.uni.pathfinder.model.entity.enums.UserRoleEnum;
 import soft.uni.pathfinder.repository.UserRepository;
 import soft.uni.pathfinder.service.RoleService;
 import soft.uni.pathfinder.service.UserService;
-import soft.uni.pathfinder.util.LoggedUser;
+
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -22,72 +23,49 @@ public class UserServiceImpl implements UserService {
     private final RoleService roleService;
     private final ModelMapper mapper;
     private final PasswordEncoder passwordEncoder;
-    private final LoggedUser loggedUser;
+
 
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleService roleService, ModelMapper mapper, PasswordEncoder passwordEncoder, LoggedUser loggedUser) {
+    public UserServiceImpl(UserRepository userRepository, RoleService roleService, ModelMapper mapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleService = roleService;
         this.mapper = mapper;
         this.passwordEncoder = passwordEncoder;
-        this.loggedUser = loggedUser;
+
     }
 
     @Override
     public void userRegistration(UserRegistrationBindingModel userRegistrationBindingModel) {
-        User user = mapper.map(userRegistrationBindingModel, User.class);
-        user.setPassword(this.passwordEncoder.encode(user.getPassword()));
-        user.setRoles(roleService.findByRoleName(UserRoleEnum.USER));
-        this.userRepository.save(user);
+        UserEntity userEntity = mapper.map(userRegistrationBindingModel, UserEntity.class);
+        userEntity.setPassword(this.passwordEncoder.encode(userEntity.getPassword()));
+        userEntity.setRoleEntities(roleService.findByRoleName(UserRoleEnum.USER));
+        this.userRepository.save(userEntity);
     }
 
 
-    @Override
-    public boolean userLogin(UserLoginBindingModel userLoginBindingModel) {
-        User currentUser = this.userRepository.findUserByUsername(userLoginBindingModel.getUsername());
-        boolean isUserLogged = false;
 
-        if (currentUser != null) {
-            if (passwordEncoder.matches(userLoginBindingModel.getPassword(), currentUser.getPassword())) {
-                loggedUser.setUsername(currentUser.getUsername());
-                loggedUser.setPassword(currentUser.getPassword());
-                loggedUser.setRole(UserRoleEnum.USER);
-                loggedUser.setLogged(true);
-
-                isUserLogged = true;
-            }
-        }
-
-        return isUserLogged;
-    }
-
-    @Override
-    public void userLogout() {
-        this.loggedUser.reset();
-    }
-
-    @Override
-    public ProfileViewModel getProfile() {
-        User user = this.userRepository.findUserByUsername(loggedUser.getUsername());
-        return mapper.map(user, ProfileViewModel.class);
-    }
+//    @Override
+//    public ProfileViewModel getProfile() {
+//        UserEntity userEntity = this.userRepository.findUserByUsername(loggedUser.getUsername()).get();
+//        return mapper.map(userEntity, ProfileViewModel.class);
+//    }
 
 
     @Override
-    public User findUserByUsername(String username) {
+    public Optional<UserEntity> findUserByUsername(String username) {
         return this.userRepository.findUserByUsername(username);
     }
 
 
     @Override
     public Boolean isUsernameTaken(String username) {
-        return this.userRepository.findUserByUsername(username) == null;
+        return this.userRepository.findUserByUsername(username).isEmpty();
     }
 
     @Override
     public Boolean isEmailTaken(String email) {
-        return this.userRepository.findUserByEmail(email) == null;
+        return this.userRepository.findUserByEmail(email).isEmpty();
     }
 
 
