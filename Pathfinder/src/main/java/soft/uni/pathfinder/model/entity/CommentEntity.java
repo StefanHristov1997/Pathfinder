@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Table(name = "comments")
-public class Comment extends BaseEntity {
+public class CommentEntity extends BaseEntity {
 
     @Column(nullable = false)
     private Boolean approved;
@@ -23,9 +23,9 @@ public class Comment extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "author_id")
-    private User author;
+    private UserEntity author;
 
     @ManyToOne
     @JoinColumn(name = "route_id")
-    private Route route;
+    private RouteEntity routeEntity;
 }

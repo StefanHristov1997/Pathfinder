@@ -12,7 +12,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "routes")
-public class Route extends BaseEntity {
+public class RouteEntity extends BaseEntity {
 
     @Column(name = "gpx_coordinates", columnDefinition = "LONGTEXT")
     private String gpxCoordinates;
@@ -24,7 +24,7 @@ public class Route extends BaseEntity {
     private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private User author;
+    private UserEntity author;
 
     @Column(name = "video_url")
     private String videoUrl;
@@ -35,9 +35,9 @@ public class Route extends BaseEntity {
     @ManyToMany
     @JoinTable(name = "routes_categories" , joinColumns = @JoinColumn(name = "route_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"))
-    private Set<Category> categories;
+    private Set<CategoryEntity> categories;
 
-    public Route(){
+    public RouteEntity(){
         this.categories = new HashSet<>();
     }
 }

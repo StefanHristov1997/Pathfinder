@@ -11,7 +11,7 @@ import soft.uni.pathfinder.model.entity.enums.UserRoleEnum;
 @NoArgsConstructor
 @Entity
 @Table(name = "roles")
-public class Role extends BaseEntity {
+public class RoleEntity extends BaseEntity {
 
     @Enumerated(value = EnumType.STRING)
     private UserRoleEnum name;

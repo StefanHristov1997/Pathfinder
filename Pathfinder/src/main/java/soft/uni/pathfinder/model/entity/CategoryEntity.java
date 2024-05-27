@@ -9,7 +9,7 @@ import soft.uni.pathfinder.model.entity.enums.CategoryEnum;
 @Setter
 @Entity
 @Table(name = "categories")
-public class Category extends BaseEntity {
+public class CategoryEntity extends BaseEntity {
 
     @Enumerated(value = EnumType.STRING)
     private CategoryEnum name;

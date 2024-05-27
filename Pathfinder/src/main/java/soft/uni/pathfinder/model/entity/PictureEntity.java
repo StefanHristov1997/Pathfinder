@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "pictures")
-public class Picture extends BaseEntity {
+public class PictureEntity extends BaseEntity {
 
     @Column(nullable = false)
     private String title;
@@ -18,9 +18,9 @@ public class Picture extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "author_id")
-    private User author;
+    private UserEntity author;
 
     @ManyToOne
     @JoinColumn(name = "route_id")
-    private Route route;
+    private RouteEntity routeEntity;
 }

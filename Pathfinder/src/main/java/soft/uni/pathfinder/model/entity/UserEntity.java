@@ -12,7 +12,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "users")
-public class User extends BaseEntity {
+public class UserEntity extends BaseEntity {
 
     @Column(nullable = false, unique = true)
     private String username;
@@ -29,14 +29,14 @@ public class User extends BaseEntity {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id"))
-    private Set<Role> roles;
+    private Set<RoleEntity> roleEntities;
 
     @Enumerated (value = EnumType.STRING)
     @Column(nullable = false)
     private LevelEnum level;
 
-    public User(){
-        this.roles = new HashSet<>();
+    public UserEntity(){
+        this.roleEntities = new HashSet<>();
     }
 
 }
