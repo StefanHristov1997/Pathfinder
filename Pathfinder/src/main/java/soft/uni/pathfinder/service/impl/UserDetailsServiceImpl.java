@@ -8,21 +8,22 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import soft.uni.pathfinder.model.entity.UserEntity;
 import soft.uni.pathfinder.repository.UserRepository;
 
+
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    @Autowired
     public UserDetailsServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository
                 .findUserByUsername(username)
                 .map(this::map)
-                .orElseThrow(()-> new UsernameNotFoundException("User with " + username + "is not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("User with username: " + username + " is not found"));
     }
 
     private UserDetails map(UserEntity userEntity) {

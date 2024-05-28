@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import soft.uni.pathfinder.model.dto.view.ProfileViewModel;
 import soft.uni.pathfinder.service.UserService;
+import soft.uni.pathfinder.service.helpers.LoggedUserHelperService;
 
 @Controller
 @RequestMapping("/users")
@@ -15,19 +16,19 @@ public class UserProfileController {
     private final UserService userService;
 
     @Autowired
-    public UserProfileController(UserService userService) {
+    public UserProfileController(UserService userService, LoggedUserHelperService loggedUserHelperService) {
         this.userService = userService;
     }
 
-//    @GetMapping("/profile")
-//    public ModelAndView profile() {
-//        ModelAndView modelAndView = new ModelAndView("profile");
-//        ProfileViewModel profileViewModel = userService.getProfile();
-//
-//        modelAndView.addObject("profile", profileViewModel);
-//
-//        return modelAndView;
-//    }
+    @GetMapping("/profile")
+    public ModelAndView profile() {
+        ModelAndView modelAndView = new ModelAndView("profile");
+        ProfileViewModel profileViewModel = userService.getProfile();
+
+        modelAndView.addObject("profile", profileViewModel);
+
+        return modelAndView;
+    }
 
     @GetMapping("/profile/back")
     public ModelAndView homeMenu() {

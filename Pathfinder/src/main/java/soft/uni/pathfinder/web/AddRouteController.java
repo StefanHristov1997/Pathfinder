@@ -28,11 +28,11 @@ public class AddRouteController {
         return new ModelAndView("add-route");
     }
 
-//    @PostMapping("/add")
-//    public ModelAndView add(AddRouteBindingModel addRouteBindingModel) {
-//        this.routeService.addRoute(addRouteBindingModel);
-//        return new ModelAndView("redirect:/");
-//    }
+    @PostMapping("/add")
+    public ModelAndView add(AddRouteBindingModel addRouteBindingModel) {
+        this.routeService.addRoute(addRouteBindingModel);
+        return new ModelAndView("redirect:/");
+    }
 
     @ModelAttribute("categories")
     public CategoryEnum[] categoryEnums() {

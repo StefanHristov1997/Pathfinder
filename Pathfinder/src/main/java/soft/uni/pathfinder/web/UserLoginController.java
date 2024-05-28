@@ -22,6 +22,7 @@ public class UserLoginController {
                                                     RedirectAttributes redirectAttributes) {
 
         redirectAttributes.addFlashAttribute("badCredentials", true);
+        System.out.println(e.getMessage());
         return new ModelAndView("redirect:login");
     }
 
