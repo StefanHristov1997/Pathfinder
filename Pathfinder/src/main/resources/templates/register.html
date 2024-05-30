@@ -128,7 +128,9 @@
                         <select th:name="level"
                                 id="level"
                                 class="custom-select">
-                            <option th:each="lev: ${levels}" th:text="${#strings.toLowerCase(lev)}" th:value="${lev}"
+                            <option th:each="lev: ${levels}" th:text="${#strings.toLowerCase(lev)}"
+                                    th:value="${lev}"
+                                    th:field="*{level}"
                                     selected>Select level
                             </option>
                         </select>
