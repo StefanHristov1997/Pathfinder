@@ -49,13 +49,19 @@
                                aria-describedby="passwordHelpInline">
                     </div>
                 </div>
+                <div>
+                    <div class="remember-me-container">
+                        <input type="checkbox" id="remember-me" class="remember-me-checkbox">
+                        <label for="remember-me" class="remember-me-label">Remember Me</label>
+                    </div>
+                </div>
                 <div class="d-flex justify-content-center mt-2">
                     <button class="btn btn-primary btn-block w-50" type="submit">Login</button>
                 </div>
                 <div class="d-flex justify-content-center mt-2" style="min-height: 1.2rem">
                     <p th:if="${badCredentials}"
                        class="alert-danger">
-                       Invalid username and/or password
+                        Invalid username and/or password
                     </p>
                 </div>
             </form>
