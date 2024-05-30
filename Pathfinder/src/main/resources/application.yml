@@ -34,6 +34,9 @@ spring:
   #api-secret:
   #cloud-name:
 logging:
-    level:
-      org.hibernate.SQL: DEBUG
-      org.hibernate.orm.jdbc.bind: TRACE
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
+
+pathfinder:
+  remember.me.key: ${REMEMBER_ME}

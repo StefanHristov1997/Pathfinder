@@ -1,5 +1,6 @@
 package soft.uni.pathfinder.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,13 +16,19 @@ import soft.uni.pathfinder.service.impl.UserDetailsServiceImpl;
 @Configuration
 public class SecurityConfig {
 
+    public String rememberMeKey;
+
+    public SecurityConfig(@Value("${pathfinder:remember.me.key") String rememberMeKey) {
+        this.rememberMeKey = rememberMeKey;
+    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(
                 authorizedRequest ->
                         authorizedRequest
                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                .requestMatchers("/", "/users/login", "/users/register", "/about","/users/login-error").permitAll()
+                                .requestMatchers("/", "/users/login", "/users/register", "/about", "/users/login-error").permitAll()
                                 .anyRequest().authenticated()
         ).formLogin(
                 formLogin ->
@@ -37,6 +44,14 @@ public class SecurityConfig {
                                 .logoutUrl("/users/logout")
                                 .logoutSuccessUrl("/")
                                 .invalidateHttpSession(true)
+        ).rememberMe(
+                rememberMe -> {
+                    rememberMe
+                            .key(rememberMeKey)
+                            .rememberMeParameter("rememberMe")
+                            .rememberMeCookieName("rememberMe");
+                }
+
         ).csrf(AbstractHttpConfigurer::disable);
 
         return http.build();
