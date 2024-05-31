@@ -10,7 +10,6 @@ import soft.uni.pathfinder.model.dto.view.RoutesViewModel;
 import soft.uni.pathfinder.model.entity.RouteEntity;
 import soft.uni.pathfinder.repository.RouteRepository;
 import soft.uni.pathfinder.service.RouteService;
-import soft.uni.pathfinder.service.helpers.LoggedUserHelperService;
 
 import java.util.List;
 
@@ -20,12 +19,11 @@ public class RouteServiceImpl implements RouteService {
 
     private final RouteRepository routeRepository;
     private final ModelMapper modelMapper;
-    private final LoggedUserHelperService loggedUserHelperService;
+
 
     @Override
     public void addRoute(AddRouteBindingModel addRouteBindingModel) {
         RouteEntity routeEntity = this.modelMapper.map(addRouteBindingModel, RouteEntity.class);
-        routeEntity.setAuthor(loggedUserHelperService.get());
 
         this.routeRepository.save(routeEntity);
     }

@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+import soft.uni.pathfinder.model.entity.UserEntity;
 import soft.uni.pathfinder.model.entity.enums.CategoryEnum;
 import soft.uni.pathfinder.model.entity.enums.LevelEnum;
 
@@ -31,4 +32,6 @@ public class AddRouteBindingModel {
 
     @NotNull(message = "Required field")
     private Set<CategoryEnum> categories;
+
+    private UserEntity author;
 }
