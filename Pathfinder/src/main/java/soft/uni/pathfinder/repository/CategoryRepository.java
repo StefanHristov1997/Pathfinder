@@ -5,8 +5,10 @@ import org.springframework.stereotype.Repository;
 import soft.uni.pathfinder.model.entity.CategoryEntity;
 import soft.uni.pathfinder.model.entity.enums.CategoryEnum;
 
+import java.util.Set;
+
 @Repository
 public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> {
 
-    CategoryEntity findCategoryByName(CategoryEnum category);
+    Set<CategoryEntity> findAllByNameIn(Set<CategoryEnum> category);
 }

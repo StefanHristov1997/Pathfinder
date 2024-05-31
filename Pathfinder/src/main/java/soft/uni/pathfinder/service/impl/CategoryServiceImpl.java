@@ -7,6 +7,8 @@ import soft.uni.pathfinder.model.entity.enums.CategoryEnum;
 import soft.uni.pathfinder.repository.CategoryRepository;
 import soft.uni.pathfinder.service.CategoryService;
 
+import java.util.Set;
+
 @Service
 public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository categoryRepository;
@@ -16,8 +18,9 @@ public class CategoryServiceImpl implements CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
+
     @Override
-    public CategoryEntity getCategory(CategoryEnum category) {
-        return this.categoryRepository.findCategoryByName(category);
+    public Set<CategoryEntity> getAllByNameIn(Set<CategoryEnum> categories) {
+        return this.categoryRepository.findAllByNameIn(categories);
     }
 }
