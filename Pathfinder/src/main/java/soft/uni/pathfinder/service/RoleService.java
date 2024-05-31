@@ -6,5 +6,5 @@ import soft.uni.pathfinder.model.entity.enums.UserRoleEnum;
 import java.util.Set;
 
 public interface RoleService {
-    Set<RoleEntity> findByRoleName(UserRoleEnum roleName);
+    RoleEntity findRoleNyName(String roleName);
 }

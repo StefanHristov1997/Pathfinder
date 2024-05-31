@@ -27,7 +27,7 @@ public class UserEntity extends BaseEntity {
     private String email;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id"))
     private Set<RoleEntity> roleEntities;
 

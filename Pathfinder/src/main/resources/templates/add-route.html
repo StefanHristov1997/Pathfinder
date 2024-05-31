@@ -69,28 +69,24 @@
         <div>
             <div class="form-group">
                 <label th:for="level">Level</label>
-                <label>
                     <select th:field="*{level}"
                             th:id="level"
                             th:class="custom-select">
                         <option th:value="levels">Select Level</option>
                         <option th:each="level: ${levels}" th:text="${level}" th:value="${level}" th:selected>Select level</option>
-                        <small th:errors="*{level}" id="inputLevelError"
-                               class="invalid-feedback form-text alert-danger rounded">error message</small>
                     </select>
-                </label>
+                <small th:errors="*{level}" id="inputLevelError"
+                       class="invalid-feedback form-text alert-danger rounded">error message</small>
             </div>
         </div>
         <div>
             <div class="form-group">
                 <label th:for="videoUrl">Video Url (only last eleven characters from Youtube)</label>
-                <label>
                     <input th:field="*{videoUrl}"
                            th:errorclass="is-invalid"
                            th:id="videoUrl"
                            th:type="text"
                            th:class="form-control" placeholder="Video url">
-                </label>
                 <small th:errors="*{videoUrl}" id="inputVideoUrlError"
                        class="invalid-feedback form-text alert-danger rounded">error message</small>
             </div>
@@ -98,7 +94,6 @@
         <div>
             <div class="form-group p-3">
                 <label class="p-2" th:for="categories">Categories:</label>
-                <label>
                     <input class="m-3"
                            th:field="*{categories}"
                            th:each="categoryEntity: ${categories}"
@@ -106,7 +101,6 @@
                            th:type="checkbox"
                            th:id="categories"
                            th:value="${categoryEntity}">
-                </label>
                 <small th:errors="*{categories}" id="inputCategoriesError"
                        class="invalid-feedback form-text alert-danger rounded">error message</small>
             </div>

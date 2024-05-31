@@ -9,5 +9,5 @@ import java.util.Set;
 
 @Repository
 public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
-    Set<RoleEntity> findByName(UserRoleEnum name);
+    RoleEntity findRoleEntityByName(UserRoleEnum name);
 }

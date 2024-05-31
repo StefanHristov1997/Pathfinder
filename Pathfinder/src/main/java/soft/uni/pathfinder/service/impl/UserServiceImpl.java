@@ -15,6 +15,7 @@ import soft.uni.pathfinder.service.UserService;
 import soft.uni.pathfinder.service.helpers.LoggedUserHelperService;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -28,13 +29,9 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
 
-    //TODO: Implement password and role into mapper config
     @Override
     public void userRegistration(UserRegistrationBindingModel userRegistrationBindingModel) {
         UserEntity userEntity = mapper.map(userRegistrationBindingModel, UserEntity.class);
-        userEntity.setPassword(this.passwordEncoder.encode(userEntity.getPassword()));
-
-        userEntity.setRoleEntities(roleService.findByRoleName(UserRoleEnum.USER));
 
         this.userRepository.save(userEntity);
     }

@@ -12,7 +12,6 @@ import java.util.Set;
 @Service
 public class RoleServiceImpl implements RoleService {
 
-
     private final RoleRepository roleRepository;
 
     @Autowired
@@ -21,7 +20,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Set<RoleEntity> findByRoleName(UserRoleEnum roleName) {
-        return this.roleRepository.findByName(roleName);
+    public RoleEntity findRoleNyName(String roleName) {
+        return this.roleRepository.findRoleEntityByName(UserRoleEnum.valueOf(roleName));
     }
 }
